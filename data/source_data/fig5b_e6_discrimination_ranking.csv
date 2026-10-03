@@ -1,0 +1,14 @@
+method,metric,value
+STRING centrality,AUROC,0.9103
+Harmonic mean,AUROC,0.8456
+ECS (multiplicative),AUROC,0.7048
+Additive,AUROC,0.8278
+Geometric mean,AUROC,0.7539
+Arithmetic mean,AUROC,0.7319
+Rank aggregation,AUROC,0.7856
+Weighted rank,AUROC,0.9058
+Logistic regression,AUROC,0.9098
+Elastic net,AUROC,0.4812
+Random forest,AUROC,0.9134
+STRING centrality,AUPRC,0.0272
+Harmonic mean,AUPRC,0.0779

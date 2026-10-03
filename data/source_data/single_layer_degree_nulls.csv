@@ -1,0 +1,17 @@
+endpoint,layer,observed_auroc,null_mean,null_sd,z,p_emp_ge
+E1 PDAC pan-dependency,mutation_freq,0.4991,0.4991,0.0,0.0,0.9995
+E1 PDAC pan-dependency,impc_animal_ko,0.5478,0.5478,0.0,-0.0,0.9995
+E1 PDAC pan-dependency,genetic_constraint,0.524,0.524,0.0,0.0,0.9995
+E1 PDAC pan-dependency,cancer_driver,0.5067,0.5067,0.0,0.0,0.9995
+E1 PDAC pan-dependency,ot_genetics_pdac,0.5044,0.5044,0.0,0.3,0.3811
+E1 PDAC pan-dependency,druggability,0.5072,0.5065,0.0004,1.46,0.0774
+E1 PDAC pan-dependency,hpa_pdac_prognostic,0.6056,0.6021,0.0017,2.13,0.0195
+E1 PDAC pan-dependency,hpa_rna_tissue_spec,0.4272,0.4277,0.0004,-1.24,0.8996
+E4 CRC pan-dependency,mutation_freq,0.4971,0.4971,0.0,-0.0,0.9995
+E4 CRC pan-dependency,impc_animal_ko,0.5456,0.5456,0.0,-0.0,0.9995
+E4 CRC pan-dependency,genetic_constraint,0.5303,0.5303,0.0,-0.0,0.9995
+E4 CRC pan-dependency,cancer_driver,0.5075,0.5075,0.0,0.0,0.9995
+E4 CRC pan-dependency,ot_genetics_pdac,0.5042,0.5042,0.0,0.87,0.1883
+E4 CRC pan-dependency,druggability,0.5064,0.506,0.0004,1.07,0.1513
+E4 CRC pan-dependency,hpa_pdac_prognostic,0.6083,0.6049,0.0017,2.05,0.0195
+E4 CRC pan-dependency,hpa_rna_tissue_spec,0.4263,0.4267,0.0004,-0.99,0.8337

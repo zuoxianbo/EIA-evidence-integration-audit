@@ -1,0 +1,22 @@
+endpoint,method,delta_auroc
+E4 CRC,ECS (multiplicative),-0.2868
+E4 CRC,Additive,-0.1088
+E4 CRC,Geometric mean,-0.1062
+E4 CRC,Harmonic mean,-0.1258
+E4 CRC,Arithmetic mean,-0.1216
+E4 CRC,Rank aggregation,-0.1678
+E4 CRC,Weighted rank,-0.0638
+E5 clinical,ECS (multiplicative),-0.1616
+E5 clinical,Additive,-0.0379
+E5 clinical,Geometric mean,-0.0731
+E5 clinical,Harmonic mean,-0.045
+E5 clinical,Arithmetic mean,-0.0918
+E5 clinical,Rank aggregation,-0.1322
+E5 clinical,Weighted rank,-0.0298
+E6 drug response,ECS (multiplicative),-0.2055
+E6 drug response,Additive,-0.0825
+E6 drug response,Geometric mean,-0.1565
+E6 drug response,Harmonic mean,-0.0647
+E6 drug response,Arithmetic mean,-0.1784
+E6 drug response,Rank aggregation,-0.1247
+E6 drug response,Weighted rank,-0.0045

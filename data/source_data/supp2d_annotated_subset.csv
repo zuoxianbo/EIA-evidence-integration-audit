@@ -1,0 +1,5 @@
+endpoint,subset_n,best_single,best_single_auroc,best_composite,best_composite_auroc,delta_comp,delta_comp_ci_lo,delta_comp_ci_hi
+E1 PDAC pan-dependency,12730,STRING centrality,0.6701,Weighted rank,0.5963,-0.0738,-0.0811,-0.0671
+SelA PDAC-selective (A_ratio),12730,Mutation frequency,0.5172,ECS (multiplicative),0.4756,-0.0416,-0.1038,0.0223
+SelB PDAC-selective (B_zeffect==C),12730,HPA RNA tissue spec,0.5501,ECS (multiplicative),0.5237,-0.0264,-0.0852,0.029
+SelD PDAC-selective (D_mixed),12730,STRING centrality,0.5666,Weighted rank,0.5502,-0.0164,-0.0496,0.0139

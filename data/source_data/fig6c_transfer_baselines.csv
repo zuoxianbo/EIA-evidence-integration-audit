@@ -1,0 +1,4 @@
+method,pdac_to_crc,crc_to_pdac
+"Random forest (5-fold ensemble, no refit)",0.8183,0.8118
+Label copy (binary essential flag),0.9291,0.9307
+"Dependency score (continuous, direct)",0.9817,0.9739

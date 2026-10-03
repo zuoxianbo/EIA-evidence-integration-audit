@@ -1,0 +1,10 @@
+layer,type,n_covered,direction,used_directly_by_labels,overlap_class_with_labels
+string_centrality,network,19622,higher=better connected,,constructed control (E8 uses mutation + centrality difference)
+mutation_freq,genetic,11205,higher=more recurrently mutated,,constructed control (E8 uses mutation + centrality difference)
+impc_animal_ko,animal,7817,higher=more lethal/essential in mouse,,no direct label reuse
+genetic_constraint,constraint,14086,higher=more intolerant of LoF,,no direct label reuse
+cancer_driver,driver,245,1=cancer driver gene,,no direct label reuse
+ot_genetics_pdac,genetic,500,higher=genetic association score,E7 genetic-association reuse,direct reuse (E7 label = top of this layer)
+druggability,drug,5188,1=approved/druggable target,,direct reuse (E3-C label = layer membership; E3 conjunction)
+hpa_pdac_prognostic,cancer,15541,1=prognostic in PDAC,,no direct label reuse
+hpa_rna_tissue_spec,tissue,4679,higher=more RNA tissue-specific,,no direct label reuse

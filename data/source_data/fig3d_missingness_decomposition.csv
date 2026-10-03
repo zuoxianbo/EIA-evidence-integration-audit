@@ -1,0 +1,79 @@
+endpoint,scorer,auroc
+E1 PDAC pan-dependency,values+missingness (frozen harmonic),0.5752
+E1 PDAC pan-dependency,values-only,0.5801
+E1 PDAC pan-dependency,missingness-only,0.5542
+E1 PDAC pan-dependency,coverage count,0.5727
+E1 PDAC pan-dependency [coverage indicator: string_centrality],per-layer coverage indicator,0.5267
+E1 PDAC pan-dependency [coverage indicator: mutation_freq],per-layer coverage indicator,0.5098
+E1 PDAC pan-dependency [coverage indicator: impc_animal_ko],per-layer coverage indicator,0.5465
+E1 PDAC pan-dependency [coverage indicator: genetic_constraint],per-layer coverage indicator,0.5752
+E1 PDAC pan-dependency [coverage indicator: cancer_driver],per-layer coverage indicator,0.5067
+E1 PDAC pan-dependency [coverage indicator: ot_genetics_pdac],per-layer coverage indicator,0.5044
+E1 PDAC pan-dependency [coverage indicator: druggability],per-layer coverage indicator,0.5018
+E1 PDAC pan-dependency [coverage indicator: hpa_pdac_prognostic],per-layer coverage indicator,0.6005
+E1 PDAC pan-dependency [coverage indicator: hpa_rna_tissue_spec],per-layer coverage indicator,0.4278
+E4 CRC pan-dependency,values+missingness (frozen harmonic),0.576
+E4 CRC pan-dependency,values-only,0.5848
+E4 CRC pan-dependency,missingness-only,0.554
+E4 CRC pan-dependency,coverage count,0.5725
+E4 CRC pan-dependency [coverage indicator: string_centrality],per-layer coverage indicator,0.5277
+E4 CRC pan-dependency [coverage indicator: mutation_freq],per-layer coverage indicator,0.5062
+E4 CRC pan-dependency [coverage indicator: impc_animal_ko],per-layer coverage indicator,0.5449
+E4 CRC pan-dependency [coverage indicator: genetic_constraint],per-layer coverage indicator,0.5784
+E4 CRC pan-dependency [coverage indicator: cancer_driver],per-layer coverage indicator,0.5075
+E4 CRC pan-dependency [coverage indicator: ot_genetics_pdac],per-layer coverage indicator,0.5042
+E4 CRC pan-dependency [coverage indicator: druggability],per-layer coverage indicator,0.501
+E4 CRC pan-dependency [coverage indicator: hpa_pdac_prognostic],per-layer coverage indicator,0.6032
+E4 CRC pan-dependency [coverage indicator: hpa_rna_tissue_spec],per-layer coverage indicator,0.4268
+E5 clinical concordance,values+missingness (frozen harmonic),0.9412
+E5 clinical concordance,values-only,0.875
+E5 clinical concordance,missingness-only,0.9321
+E5 clinical concordance,coverage count,0.882
+E5 clinical concordance [coverage indicator: string_centrality],per-layer coverage indicator,0.5272
+E5 clinical concordance [coverage indicator: mutation_freq],per-layer coverage indicator,0.6445
+E5 clinical concordance [coverage indicator: impc_animal_ko],per-layer coverage indicator,0.5832
+E5 clinical concordance [coverage indicator: genetic_constraint],per-layer coverage indicator,0.575
+E5 clinical concordance [coverage indicator: cancer_driver],per-layer coverage indicator,0.7374
+E5 clinical concordance [coverage indicator: ot_genetics_pdac],per-layer coverage indicator,0.8314
+E5 clinical concordance [coverage indicator: druggability],per-layer coverage indicator,0.7611
+E5 clinical concordance [coverage indicator: hpa_pdac_prognostic],per-layer coverage indicator,0.6257
+E5 clinical concordance [coverage indicator: hpa_rna_tissue_spec],per-layer coverage indicator,0.4157
+SelA PDAC-selective (A_ratio),values+missingness (frozen harmonic),0.5299
+SelA PDAC-selective (A_ratio),values-only,0.4872
+SelA PDAC-selective (A_ratio),missingness-only,0.529
+SelA PDAC-selective (A_ratio),coverage count,0.5374
+SelA PDAC-selective (A_ratio) [coverage indicator: string_centrality],per-layer coverage indicator,0.5194
+SelA PDAC-selective (A_ratio) [coverage indicator: mutation_freq],per-layer coverage indicator,0.5296
+SelA PDAC-selective (A_ratio) [coverage indicator: impc_animal_ko],per-layer coverage indicator,0.5126
+SelA PDAC-selective (A_ratio) [coverage indicator: genetic_constraint],per-layer coverage indicator,0.5345
+SelA PDAC-selective (A_ratio) [coverage indicator: cancer_driver],per-layer coverage indicator,0.4961
+SelA PDAC-selective (A_ratio) [coverage indicator: ot_genetics_pdac],per-layer coverage indicator,0.4939
+SelA PDAC-selective (A_ratio) [coverage indicator: druggability],per-layer coverage indicator,0.5036
+SelA PDAC-selective (A_ratio) [coverage indicator: hpa_pdac_prognostic],per-layer coverage indicator,0.5234
+SelA PDAC-selective (A_ratio) [coverage indicator: hpa_rna_tissue_spec],per-layer coverage indicator,0.4936
+SelB PDAC-selective (B_zeffect==C),values+missingness (frozen harmonic),0.4405
+SelB PDAC-selective (B_zeffect==C),values-only,0.4388
+SelB PDAC-selective (B_zeffect==C),missingness-only,0.4366
+SelB PDAC-selective (B_zeffect==C),coverage count,0.4139
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: string_centrality],per-layer coverage indicator,0.5108
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: mutation_freq],per-layer coverage indicator,0.4233
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: impc_animal_ko],per-layer coverage indicator,0.4474
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: genetic_constraint],per-layer coverage indicator,0.4513
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: cancer_driver],per-layer coverage indicator,0.4982
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: ot_genetics_pdac],per-layer coverage indicator,0.4983
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: druggability],per-layer coverage indicator,0.4697
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: hpa_pdac_prognostic],per-layer coverage indicator,0.4347
+SelB PDAC-selective (B_zeffect==C) [coverage indicator: hpa_rna_tissue_spec],per-layer coverage indicator,0.5615
+SelD PDAC-selective (D_mixed),values+missingness (frozen harmonic),0.4551
+SelD PDAC-selective (D_mixed),values-only,0.48
+SelD PDAC-selective (D_mixed),missingness-only,0.4474
+SelD PDAC-selective (D_mixed),coverage count,0.4256
+SelD PDAC-selective (D_mixed) [coverage indicator: string_centrality],per-layer coverage indicator,0.5109
+SelD PDAC-selective (D_mixed) [coverage indicator: mutation_freq],per-layer coverage indicator,0.4392
+SelD PDAC-selective (D_mixed) [coverage indicator: impc_animal_ko],per-layer coverage indicator,0.4531
+SelD PDAC-selective (D_mixed) [coverage indicator: genetic_constraint],per-layer coverage indicator,0.4564
+SelD PDAC-selective (D_mixed) [coverage indicator: cancer_driver],per-layer coverage indicator,0.5024
+SelD PDAC-selective (D_mixed) [coverage indicator: ot_genetics_pdac],per-layer coverage indicator,0.5065
+SelD PDAC-selective (D_mixed) [coverage indicator: druggability],per-layer coverage indicator,0.4776
+SelD PDAC-selective (D_mixed) [coverage indicator: hpa_pdac_prognostic],per-layer coverage indicator,0.4584
+SelD PDAC-selective (D_mixed) [coverage indicator: hpa_rna_tissue_spec],per-layer coverage indicator,0.5213

@@ -1,0 +1,5 @@
+item,value,err_type,err_low,err_high
+STRING centrality (strongest single layer),0.6951,none,0,0
+Harmonic composite (observed),0.5752,none,0,0
+Degree-matched null (mean),0.5756,sd,0.573444,0.577756
+Annotation-density null (mean),0.5635,sd,0.556444,0.570556

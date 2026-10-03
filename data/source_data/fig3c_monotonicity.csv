@@ -1,0 +1,4 @@
+metric,pct
+Genes whose ECS gain term is negative,84.000771
+Genes whose score falls when support increases,28.00347
+Genes with double sign flip,26.152956

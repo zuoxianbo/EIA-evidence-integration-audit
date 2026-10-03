@@ -1,0 +1,17 @@
+layer,layer_label,pct_genes_at_sentinel
+string_centrality,"string
+centr.",5.440702
+mutation_freq,"mut.
+freq.",46.002602
+impc_animal_ko,"impc
+KO",62.329526
+genetic_constraint,"gen.
+constraint",32.118934
+cancer_driver,"cancer
+driver",98.819334
+ot_genetics_pdac,ot_pdac,97.590478
+druggability,drugg,74.998795
+hpa_pdac_prognostic,"hpa
+prog",25.107224
+hpa_rna_tissue_spec,"hpa
+RNA",77.451689

@@ -1,0 +1,6040 @@
+{
+ "meta": {
+  "generated": "2026-09-24T14:34:14",
+  "python": "3.13.12",
+  "numpy": "2.5.3",
+  "sklearn": "1.9.0",
+  "seed": 20260819,
+  "n_bootstrap": 2000,
+  "n_null": 1000,
+  "n_genes": 20751,
+  "features": [
+   "string_centrality",
+   "mutation_freq",
+   "impc_animal_ko",
+   "genetic_constraint",
+   "cancer_driver",
+   "ot_genetics_pdac",
+   "druggability",
+   "hpa_pdac_prognostic",
+   "hpa_rna_tissue_spec"
+  ],
+  "protocol": "v33: 6 real disease endpoints + 2 audit controls (E7/E8) + preregistered external evaluation (E6); SelB==SelC counted once (frozen-file identity); fold-internal scaling; repeated CV; BH multiplicity over m=60 with paired-bootstrap p for every contrast; self-audit S1-S11; P0 ledgers (scorer manifest, delta/BH ledger, source lineage) and P1 analyses (missingness-only, aggregation robustness, nested CV)",
+  "universe_note": "20,751-gene universe is the UNION of layer coverage; DepMap files contain 18,531 genes; 2,303 genes lack dependency labels and are treated as negatives (S10 sensitivity quantifies the bias)",
+  "label_definitions": {
+   "E1": "DepMap PDAC 'essential' flag (top-quartile rule per frozen meta pan_essential_def; strict-label sensitivity in S4)",
+   "E4": "DepMap CRC 'essential' flag (same rule)",
+   "E5": "35-gene curated PDAC clinical-target set (graded 'correlated source' in v27)",
+   "SelA-D": "top 250 by A_ratio / B_zeffect(==C_lineage_adj, frozen file identity) / D_mixed from 26Q1-derived v11 matrix"
+  }
+ },
+ "endpoints": {
+  "E1 PDAC pan-dependency": {
+   "n_pos": 4584,
+   "provenance": {
+    "overlap_score": 0.0,
+    "label_dependent_layers": {},
+    "implicated_layer_auroc": {},
+    "circularity_flag": false
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.5752,
+    "harmonic_available_case": 0.6272,
+    "harmonic_shift": 0.052
+   },
+   "aggregation": {
+    "STRING centrality": 0.6951,
+    "Mutation frequency": 0.4991,
+    "IMPC animal KO": 0.5478,
+    "Genetic constraint": 0.524,
+    "Cancer-driver annotation": 0.5067,
+    "OT genetics (PDAC)": 0.5044,
+    "Druggability": 0.5072,
+    "HPA PDAC prognostic": 0.6056,
+    "HPA RNA tissue spec": 0.4272,
+    "ECS (multiplicative)": 0.4152,
+    "Additive": 0.5932,
+    "Geometric mean": 0.5985,
+    "Harmonic mean": 0.5752,
+    "Arithmetic mean": 0.5796,
+    "Rank aggregation": 0.5327,
+    "Weighted rank": 0.6341,
+    "Logistic regression": 0.6786,
+    "Elastic net": 0.6715,
+    "Random forest": 0.7505
+   },
+   "best_single_layer": {
+    "name": "STRING centrality",
+    "auroc": 0.6951,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "Weighted rank",
+    "auroc": 0.6341
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": -0.2799,
+     "ci95": [
+      -0.2937,
+      -0.2654
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.2798
+    },
+    "Additive": {
+     "delta": -0.1019,
+     "ci95": [
+      -0.1104,
+      -0.0935
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1019
+    },
+    "Geometric mean": {
+     "delta": -0.0966,
+     "ci95": [
+      -0.1058,
+      -0.0875
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0965
+    },
+    "Harmonic mean": {
+     "delta": -0.1199,
+     "ci95": [
+      -0.1293,
+      -0.1102
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1198
+    },
+    "Arithmetic mean": {
+     "delta": -0.1155,
+     "ci95": [
+      -0.1261,
+      -0.1055
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1155
+    },
+    "Rank aggregation": {
+     "delta": -0.1624,
+     "ci95": [
+      -0.1735,
+      -0.1518
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1625
+    },
+    "Weighted rank": {
+     "delta": -0.061,
+     "ci95": [
+      -0.0662,
+      -0.0559
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.061
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": -0.061,
+    "ci95": [
+     -0.0662,
+     -0.0559
+    ],
+    "p_one_sided": 0.99975,
+    "boot_mean": -0.061,
+    "composite": "Weighted rank",
+    "single": "STRING centrality"
+   },
+   "delta_rf_vs_best_single": {
+    "delta": 0.0554,
+    "ci95": [
+     0.049,
+     0.0616
+    ],
+    "p_one_sided": 0.00025,
+    "boot_mean": 0.0553
+   },
+   "baseline_family": {
+    "Harmonic mean": {
+     "degree": {
+      "observed": 0.5752,
+      "null_mean": 0.5756,
+      "null_sd": 0.0011,
+      "z": -0.36,
+      "p_emp_ge": 0.6558
+     },
+     "density": {
+      "observed": 0.5752,
+      "null_mean": 0.5635,
+      "null_sd": 0.0036,
+      "z": 3.28,
+      "p_emp_ge": 0.0005
+     }
+    },
+    "ECS (multiplicative)": {
+     "degree": {
+      "observed": 0.4152,
+      "null_mean": 0.415,
+      "null_sd": 0.0008,
+      "z": 0.23,
+      "p_emp_ge": 0.4001
+     },
+     "density": {
+      "observed": 0.4152,
+      "null_mean": 0.4329,
+      "null_sd": 0.0041,
+      "z": -4.38,
+      "p_emp_ge": 0.9995
+     }
+    },
+    "Additive": {
+     "degree": {
+      "observed": 0.5932,
+      "null_mean": 0.5927,
+      "null_sd": 0.0004,
+      "z": 1.15,
+      "p_emp_ge": 0.1184
+     },
+     "density": {
+      "observed": 0.5932,
+      "null_mean": 0.5611,
+      "null_sd": 0.0035,
+      "z": 9.28,
+      "p_emp_ge": 0.0005
+     }
+    }
+   }
+  },
+  "E4 CRC pan-dependency": {
+   "n_pos": 4608,
+   "provenance": {
+    "overlap_score": 0.0,
+    "label_dependent_layers": {},
+    "implicated_layer_auroc": {},
+    "circularity_flag": false
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.576,
+    "harmonic_available_case": 0.63,
+    "harmonic_shift": 0.054
+   },
+   "aggregation": {
+    "STRING centrality": 0.7018,
+    "Mutation frequency": 0.4971,
+    "IMPC animal KO": 0.5456,
+    "Genetic constraint": 0.5303,
+    "Cancer-driver annotation": 0.5075,
+    "OT genetics (PDAC)": 0.5042,
+    "Druggability": 0.5064,
+    "HPA PDAC prognostic": 0.6083,
+    "HPA RNA tissue spec": 0.4263,
+    "ECS (multiplicative)": 0.4151,
+    "Additive": 0.593,
+    "Geometric mean": 0.5956,
+    "Harmonic mean": 0.576,
+    "Arithmetic mean": 0.5802,
+    "Rank aggregation": 0.534,
+    "Weighted rank": 0.638,
+    "Logistic regression": 0.6828,
+    "Elastic net": 0.6747,
+    "Random forest": 0.7563
+   },
+   "best_single_layer": {
+    "name": "STRING centrality",
+    "auroc": 0.7018,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "Weighted rank",
+    "auroc": 0.638
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": -0.2868,
+     "ci95": [
+      -0.2997,
+      -0.2726
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.2865
+    },
+    "Additive": {
+     "delta": -0.1088,
+     "ci95": [
+      -0.117,
+      -0.1004
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1087
+    },
+    "Geometric mean": {
+     "delta": -0.1062,
+     "ci95": [
+      -0.115,
+      -0.097
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1061
+    },
+    "Harmonic mean": {
+     "delta": -0.1258,
+     "ci95": [
+      -0.1349,
+      -0.1162
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1257
+    },
+    "Arithmetic mean": {
+     "delta": -0.1216,
+     "ci95": [
+      -0.1312,
+      -0.1113
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1215
+    },
+    "Rank aggregation": {
+     "delta": -0.1678,
+     "ci95": [
+      -0.1785,
+      -0.1573
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1678
+    },
+    "Weighted rank": {
+     "delta": -0.0638,
+     "ci95": [
+      -0.0689,
+      -0.0588
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0638
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": -0.0638,
+    "ci95": [
+     -0.0689,
+     -0.0588
+    ],
+    "p_one_sided": 0.99975,
+    "boot_mean": -0.0638,
+    "composite": "Weighted rank",
+    "single": "STRING centrality"
+   },
+   "delta_rf_vs_best_single": {
+    "delta": 0.0545,
+    "ci95": [
+     0.048,
+     0.061
+    ],
+    "p_one_sided": 0.00025,
+    "boot_mean": 0.0545
+   },
+   "baseline_family": {
+    "Harmonic mean": {
+     "degree": {
+      "observed": 0.576,
+      "null_mean": 0.5761,
+      "null_sd": 0.0011,
+      "z": -0.09,
+      "p_emp_ge": 0.535
+     },
+     "density": {
+      "observed": 0.576,
+      "null_mean": 0.5642,
+      "null_sd": 0.0035,
+      "z": 3.33,
+      "p_emp_ge": 0.0005
+     }
+    },
+    "ECS (multiplicative)": {
+     "degree": {
+      "observed": 0.4151,
+      "null_mean": 0.4151,
+      "null_sd": 0.0007,
+      "z": -0.06,
+      "p_emp_ge": 0.518
+     },
+     "density": {
+      "observed": 0.4151,
+      "null_mean": 0.4316,
+      "null_sd": 0.0041,
+      "z": -4.02,
+      "p_emp_ge": 0.9995
+     }
+    },
+    "Additive": {
+     "degree": {
+      "observed": 0.593,
+      "null_mean": 0.5927,
+      "null_sd": 0.0004,
+      "z": 0.72,
+      "p_emp_ge": 0.2393
+     },
+     "density": {
+      "observed": 0.593,
+      "null_mean": 0.5617,
+      "null_sd": 0.0034,
+      "z": 9.21,
+      "p_emp_ge": 0.0005
+     }
+    }
+   }
+  },
+  "E5 clinical concordance": {
+   "n_pos": 35,
+   "provenance": {
+    "overlap_score": 0.0,
+    "label_dependent_layers": {},
+    "implicated_layer_auroc": {},
+    "circularity_flag": false
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.9412,
+    "harmonic_available_case": 0.8978,
+    "harmonic_shift": -0.0434
+   },
+   "aggregation": {
+    "STRING centrality": 0.9861,
+    "Mutation frequency": 0.7022,
+    "IMPC animal KO": 0.5698,
+    "Genetic constraint": 0.3888,
+    "Cancer-driver annotation": 0.7374,
+    "OT genetics (PDAC)": 0.8372,
+    "Druggability": 0.8082,
+    "HPA PDAC prognostic": 0.674,
+    "HPA RNA tissue spec": 0.4118,
+    "ECS (multiplicative)": 0.8245,
+    "Additive": 0.9483,
+    "Geometric mean": 0.9131,
+    "Harmonic mean": 0.9412,
+    "Arithmetic mean": 0.8943,
+    "Rank aggregation": 0.8539,
+    "Weighted rank": 0.9563,
+    "Logistic regression": 0.9823,
+    "Elastic net": 0.8988,
+    "Random forest": 0.9418
+   },
+   "best_single_layer": {
+    "name": "STRING centrality",
+    "auroc": 0.9861,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "Weighted rank",
+    "auroc": 0.9563
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": -0.1616,
+     "ci95": [
+      -0.2446,
+      -0.0927
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1626
+    },
+    "Additive": {
+     "delta": -0.0379,
+     "ci95": [
+      -0.0727,
+      -0.0108
+     ],
+     "p_one_sided": 0.99775,
+     "boot_mean": -0.0381
+    },
+    "Geometric mean": {
+     "delta": -0.0731,
+     "ci95": [
+      -0.1262,
+      -0.0279
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0733
+    },
+    "Harmonic mean": {
+     "delta": -0.045,
+     "ci95": [
+      -0.0854,
+      -0.0132
+     ],
+     "p_one_sided": 0.99775,
+     "boot_mean": -0.0453
+    },
+    "Arithmetic mean": {
+     "delta": -0.0918,
+     "ci95": [
+      -0.1519,
+      -0.0414
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0925
+    },
+    "Rank aggregation": {
+     "delta": -0.1322,
+     "ci95": [
+      -0.1993,
+      -0.0761
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1322
+    },
+    "Weighted rank": {
+     "delta": -0.0298,
+     "ci95": [
+      -0.0649,
+      -0.0031
+     ],
+     "p_one_sided": 0.98726,
+     "boot_mean": -0.0298
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": -0.0298,
+    "ci95": [
+     -0.0649,
+     -0.0031
+    ],
+    "p_one_sided": 0.98726,
+    "boot_mean": -0.0298,
+    "composite": "Weighted rank",
+    "single": "STRING centrality"
+   },
+   "delta_rf_vs_best_single": {
+    "delta": -0.0444,
+    "ci95": [
+     -0.0976,
+     0.0006
+    ],
+    "p_one_sided": 0.97126,
+    "boot_mean": -0.0444
+   },
+   "baseline_family": {
+    "Harmonic mean": {
+     "degree": {
+      "observed": 0.9412,
+      "null_mean": 0.9351,
+      "null_sd": 0.0041,
+      "z": 1.51,
+      "p_emp_ge": 0.0884
+     },
+     "density": {
+      "observed": 0.9412,
+      "null_mean": 0.804,
+      "null_sd": 0.0311,
+      "z": 4.41,
+      "p_emp_ge": 0.0005
+     }
+    },
+    "ECS (multiplicative)": {
+     "degree": {
+      "observed": 0.8245,
+      "null_mean": 0.8123,
+      "null_sd": 0.0076,
+      "z": 1.6,
+      "p_emp_ge": 0.0774
+     },
+     "density": {
+      "observed": 0.8245,
+      "null_mean": 0.4862,
+      "null_sd": 0.0496,
+      "z": 6.82,
+      "p_emp_ge": 0.0005
+     }
+    },
+    "Additive": {
+     "degree": {
+      "observed": 0.9483,
+      "null_mean": 0.9434,
+      "null_sd": 0.0019,
+      "z": 2.59,
+      "p_emp_ge": 0.0095
+     },
+     "density": {
+      "observed": 0.9483,
+      "null_mean": 0.8021,
+      "null_sd": 0.0308,
+      "z": 4.75,
+      "p_emp_ge": 0.0005
+     }
+    }
+   }
+  },
+  "SelA PDAC-selective (A_ratio)": {
+   "n_pos": 249,
+   "provenance": {
+    "overlap_score": 0.0,
+    "label_dependent_layers": {},
+    "implicated_layer_auroc": {},
+    "circularity_flag": false
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.5299,
+    "harmonic_available_case": 0.5175,
+    "harmonic_shift": -0.0124
+   },
+   "aggregation": {
+    "STRING centrality": 0.4801,
+    "Mutation frequency": 0.5318,
+    "IMPC animal KO": 0.5147,
+    "Genetic constraint": 0.5431,
+    "Cancer-driver annotation": 0.4961,
+    "OT genetics (PDAC)": 0.4938,
+    "Druggability": 0.5029,
+    "HPA PDAC prognostic": 0.5207,
+    "HPA RNA tissue spec": 0.492,
+    "ECS (multiplicative)": 0.4549,
+    "Additive": 0.5272,
+    "Geometric mean": 0.5234,
+    "Harmonic mean": 0.5299,
+    "Arithmetic mean": 0.5374,
+    "Rank aggregation": 0.4931,
+    "Weighted rank": 0.4838,
+    "Logistic regression": 0.5281,
+    "Elastic net": 0.4984,
+    "Random forest": 0.5755
+   },
+   "best_single_layer": {
+    "name": "Genetic constraint",
+    "auroc": 0.5431,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "Arithmetic mean",
+    "auroc": 0.5374
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": -0.0882,
+     "ci95": [
+      -0.1282,
+      -0.0485
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.089
+    },
+    "Additive": {
+     "delta": -0.0159,
+     "ci95": [
+      -0.0643,
+      0.0308
+     ],
+     "p_one_sided": 0.75737,
+     "boot_mean": -0.0168
+    },
+    "Geometric mean": {
+     "delta": -0.0197,
+     "ci95": [
+      -0.0683,
+      0.0275
+     ],
+     "p_one_sided": 0.79035,
+     "boot_mean": -0.0207
+    },
+    "Harmonic mean": {
+     "delta": -0.0132,
+     "ci95": [
+      -0.0581,
+      0.0288
+     ],
+     "p_one_sided": 0.74688,
+     "boot_mean": -0.0142
+    },
+    "Arithmetic mean": {
+     "delta": -0.0056,
+     "ci95": [
+      -0.0425,
+      0.0289
+     ],
+     "p_one_sided": 0.63543,
+     "boot_mean": -0.0062
+    },
+    "Rank aggregation": {
+     "delta": -0.05,
+     "ci95": [
+      -0.0958,
+      -0.0053
+     ],
+     "p_one_sided": 0.99075,
+     "boot_mean": -0.0506
+    },
+    "Weighted rank": {
+     "delta": -0.0592,
+     "ci95": [
+      -0.1092,
+      -0.0138
+     ],
+     "p_one_sided": 0.99475,
+     "boot_mean": -0.0603
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": -0.0056,
+    "ci95": [
+     -0.0425,
+     0.0289
+    ],
+    "p_one_sided": 0.63543,
+    "boot_mean": -0.0062,
+    "composite": "Arithmetic mean",
+    "single": "Genetic constraint"
+   },
+   "delta_rf_vs_best_single": {
+    "delta": 0.0324,
+    "ci95": [
+     -0.016,
+     0.0824
+    ],
+    "p_one_sided": 0.1007,
+    "boot_mean": 0.0317
+   },
+   "baseline_family": {
+    "Harmonic mean": {
+     "degree": {
+      "observed": 0.5299,
+      "null_mean": 0.5278,
+      "null_sd": 0.0044,
+      "z": 0.48,
+      "p_emp_ge": 0.3122
+     },
+     "density": {
+      "observed": 0.5299,
+      "null_mean": 0.534,
+      "null_sd": 0.0135,
+      "z": -0.3,
+      "p_emp_ge": 0.6339
+     }
+    },
+    "ECS (multiplicative)": {
+     "degree": {
+      "observed": 0.4549,
+      "null_mean": 0.4526,
+      "null_sd": 0.0025,
+      "z": 0.92,
+      "p_emp_ge": 0.1913
+     },
+     "density": {
+      "observed": 0.4549,
+      "null_mean": 0.4583,
+      "null_sd": 0.0145,
+      "z": -0.23,
+      "p_emp_ge": 0.5929
+     }
+    },
+    "Additive": {
+     "degree": {
+      "observed": 0.5272,
+      "null_mean": 0.5273,
+      "null_sd": 0.0018,
+      "z": -0.03,
+      "p_emp_ge": 0.516
+     },
+     "density": {
+      "observed": 0.5272,
+      "null_mean": 0.5319,
+      "null_sd": 0.0132,
+      "z": -0.35,
+      "p_emp_ge": 0.6389
+     }
+    }
+   }
+  },
+  "SelB PDAC-selective (B_zeffect==C)": {
+   "n_pos": 242,
+   "provenance": {
+    "overlap_score": 0.0,
+    "label_dependent_layers": {},
+    "implicated_layer_auroc": {},
+    "circularity_flag": false
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.4405,
+    "harmonic_available_case": 0.4262,
+    "harmonic_shift": -0.0143
+   },
+   "aggregation": {
+    "STRING centrality": 0.388,
+    "Mutation frequency": 0.426,
+    "IMPC animal KO": 0.4499,
+    "Genetic constraint": 0.4607,
+    "Cancer-driver annotation": 0.4982,
+    "OT genetics (PDAC)": 0.4983,
+    "Druggability": 0.4714,
+    "HPA PDAC prognostic": 0.4503,
+    "HPA RNA tissue spec": 0.5622,
+    "ECS (multiplicative)": 0.6068,
+    "Additive": 0.4087,
+    "Geometric mean": 0.4192,
+    "Harmonic mean": 0.4405,
+    "Arithmetic mean": 0.4158,
+    "Rank aggregation": 0.433,
+    "Weighted rank": 0.3905,
+    "Logistic regression": 0.6093,
+    "Elastic net": 0.4975,
+    "Random forest": 0.5483
+   },
+   "best_single_layer": {
+    "name": "HPA RNA tissue spec",
+    "auroc": 0.5622,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "ECS (multiplicative)",
+    "auroc": 0.6068
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": 0.0446,
+     "ci95": [
+      0.0009,
+      0.0891
+     ],
+     "p_one_sided": 0.02274,
+     "boot_mean": 0.0443
+    },
+    "Additive": {
+     "delta": -0.1535,
+     "ci95": [
+      -0.2,
+      -0.1058
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1531
+    },
+    "Geometric mean": {
+     "delta": -0.143,
+     "ci95": [
+      -0.1877,
+      -0.0948
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1427
+    },
+    "Harmonic mean": {
+     "delta": -0.1217,
+     "ci95": [
+      -0.1665,
+      -0.076
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1217
+    },
+    "Arithmetic mean": {
+     "delta": -0.1464,
+     "ci95": [
+      -0.1916,
+      -0.0979
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1459
+    },
+    "Rank aggregation": {
+     "delta": -0.1292,
+     "ci95": [
+      -0.178,
+      -0.0839
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.129
+    },
+    "Weighted rank": {
+     "delta": -0.1717,
+     "ci95": [
+      -0.2236,
+      -0.1192
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1714
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": 0.0446,
+    "ci95": [
+     0.0009,
+     0.0891
+    ],
+    "p_one_sided": 0.02274,
+    "boot_mean": 0.0443,
+    "composite": "ECS (multiplicative)",
+    "single": "HPA RNA tissue spec"
+   },
+   "delta_rf_vs_best_single": {
+    "delta": -0.0139,
+    "ci95": [
+     -0.0666,
+     0.0393
+    ],
+    "p_one_sided": 0.7074,
+    "boot_mean": -0.0145
+   },
+   "baseline_family": {
+    "Harmonic mean": {
+     "degree": {
+      "observed": 0.4405,
+      "null_mean": 0.4303,
+      "null_sd": 0.0046,
+      "z": 2.2,
+      "p_emp_ge": 0.0215
+     },
+     "density": {
+      "observed": 0.4405,
+      "null_mean": 0.4407,
+      "null_sd": 0.0129,
+      "z": -0.01,
+      "p_emp_ge": 0.506
+     }
+    },
+    "ECS (multiplicative)": {
+     "degree": {
+      "observed": 0.6068,
+      "null_mean": 0.6038,
+      "null_sd": 0.0024,
+      "z": 1.27,
+      "p_emp_ge": 0.1054
+     },
+     "density": {
+      "observed": 0.6068,
+      "null_mean": 0.5537,
+      "null_sd": 0.0145,
+      "z": 3.65,
+      "p_emp_ge": 0.0005
+     }
+    },
+    "Additive": {
+     "degree": {
+      "observed": 0.4087,
+      "null_mean": 0.405,
+      "null_sd": 0.0016,
+      "z": 2.33,
+      "p_emp_ge": 0.0185
+     },
+     "density": {
+      "observed": 0.4087,
+      "null_mean": 0.4407,
+      "null_sd": 0.0134,
+      "z": -2.38,
+      "p_emp_ge": 0.9965
+     }
+    }
+   }
+  },
+  "SelD PDAC-selective (D_mixed)": {
+   "n_pos": 243,
+   "provenance": {
+    "overlap_score": 0.0,
+    "label_dependent_layers": {},
+    "implicated_layer_auroc": {},
+    "circularity_flag": false
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.4551,
+    "harmonic_available_case": 0.463,
+    "harmonic_shift": 0.0079
+   },
+   "aggregation": {
+    "STRING centrality": 0.4584,
+    "Mutation frequency": 0.4446,
+    "IMPC animal KO": 0.4539,
+    "Genetic constraint": 0.4398,
+    "Cancer-driver annotation": 0.5024,
+    "OT genetics (PDAC)": 0.5067,
+    "Druggability": 0.4837,
+    "HPA PDAC prognostic": 0.4705,
+    "HPA RNA tissue spec": 0.5212,
+    "ECS (multiplicative)": 0.5878,
+    "Additive": 0.4354,
+    "Geometric mean": 0.4486,
+    "Harmonic mean": 0.4551,
+    "Arithmetic mean": 0.4276,
+    "Rank aggregation": 0.431,
+    "Weighted rank": 0.4436,
+    "Logistic regression": 0.5737,
+    "Elastic net": 0.4975,
+    "Random forest": 0.5764
+   },
+   "best_single_layer": {
+    "name": "HPA RNA tissue spec",
+    "auroc": 0.5212,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "ECS (multiplicative)",
+    "auroc": 0.5878
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": 0.0666,
+     "ci95": [
+      0.0241,
+      0.1102
+     ],
+     "p_one_sided": 0.00075,
+     "boot_mean": 0.0661
+    },
+    "Additive": {
+     "delta": -0.0858,
+     "ci95": [
+      -0.1342,
+      -0.0377
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0853
+    },
+    "Geometric mean": {
+     "delta": -0.0726,
+     "ci95": [
+      -0.1194,
+      -0.0233
+     ],
+     "p_one_sided": 0.99925,
+     "boot_mean": -0.0722
+    },
+    "Harmonic mean": {
+     "delta": -0.0662,
+     "ci95": [
+      -0.1147,
+      -0.0183
+     ],
+     "p_one_sided": 0.99725,
+     "boot_mean": -0.0661
+    },
+    "Arithmetic mean": {
+     "delta": -0.0936,
+     "ci95": [
+      -0.1412,
+      -0.047
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0934
+    },
+    "Rank aggregation": {
+     "delta": -0.0902,
+     "ci95": [
+      -0.1382,
+      -0.0449
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0905
+    },
+    "Weighted rank": {
+     "delta": -0.0777,
+     "ci95": [
+      -0.1329,
+      -0.0249
+     ],
+     "p_one_sided": 0.99625,
+     "boot_mean": -0.0771
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": 0.0666,
+    "ci95": [
+     0.0241,
+     0.1102
+    ],
+    "p_one_sided": 0.00075,
+    "boot_mean": 0.0661,
+    "composite": "ECS (multiplicative)",
+    "single": "HPA RNA tissue spec"
+   },
+   "delta_rf_vs_best_single": {
+    "delta": 0.0552,
+    "ci95": [
+     0.0062,
+     0.1029
+    ],
+    "p_one_sided": 0.01424,
+    "boot_mean": 0.055
+   },
+   "baseline_family": {
+    "Harmonic mean": {
+     "degree": {
+      "observed": 0.4551,
+      "null_mean": 0.4487,
+      "null_sd": 0.0046,
+      "z": 1.38,
+      "p_emp_ge": 0.0954
+     },
+     "density": {
+      "observed": 0.4551,
+      "null_mean": 0.4499,
+      "null_sd": 0.013,
+      "z": 0.4,
+      "p_emp_ge": 0.3442
+     }
+    },
+    "ECS (multiplicative)": {
+     "degree": {
+      "observed": 0.5878,
+      "null_mean": 0.5836,
+      "null_sd": 0.0025,
+      "z": 1.68,
+      "p_emp_ge": 0.0465
+     },
+     "density": {
+      "observed": 0.5878,
+      "null_mean": 0.5441,
+      "null_sd": 0.0146,
+      "z": 2.99,
+      "p_emp_ge": 0.0015
+     }
+    },
+    "Additive": {
+     "degree": {
+      "observed": 0.4354,
+      "null_mean": 0.4325,
+      "null_sd": 0.0015,
+      "z": 1.95,
+      "p_emp_ge": 0.0295
+     },
+     "density": {
+      "observed": 0.4354,
+      "null_mean": 0.4497,
+      "null_sd": 0.0135,
+      "z": -1.06,
+      "p_emp_ge": 0.8566
+     }
+    }
+   }
+  },
+  "E7 genetic-association reuse": {
+   "n_pos": 200,
+   "provenance": {
+    "overlap_score": 1.0,
+    "label_dependent_layers": {
+     "ot_genetics_pdac": 1.0
+    },
+    "implicated_layer_auroc": {
+     "ot_genetics_pdac": 1.0
+    },
+    "circularity_flag": true
+   },
+   "representation": {
+    "harmonic_sentinel_as_value": 0.888,
+    "harmonic_available_case": 0.7825,
+    "harmonic_shift": -0.1055
+   },
+   "aggregation": {
+    "STRING centrality": 0.8457,
+    "Mutation frequency": 0.5555,
+    "IMPC animal KO": 0.5492,
+    "Genetic constraint": 0.4543,
+    "Cancer-driver annotation": 0.5773,
+    "OT genetics (PDAC)": 1.0,
+    "Druggability": 0.6666,
+    "HPA PDAC prognostic": 0.6459,
+    "HPA RNA tissue spec": 0.4463,
+    "ECS (multiplicative)": 0.7596,
+    "Additive": 0.8785,
+    "Geometric mean": 0.8051,
+    "Harmonic mean": 0.888,
+    "Arithmetic mean": 0.8115,
+    "Rank aggregation": 0.7922,
+    "Weighted rank": 0.8283
+   },
+   "best_single_layer": {
+    "name": "OT genetics (PDAC)",
+    "auroc": 1.0,
+    "selection_rule": "max observed AUROC on the same evaluation (data-dependent; declared)"
+   },
+   "best_composite": {
+    "name": "Harmonic mean",
+    "auroc": 0.888
+   },
+   "delta_all_composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": -0.2404,
+     "ci95": [
+      -0.2714,
+      -0.2109
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.2404
+    },
+    "Additive": {
+     "delta": -0.1215,
+     "ci95": [
+      -0.1498,
+      -0.0936
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1215
+    },
+    "Geometric mean": {
+     "delta": -0.1949,
+     "ci95": [
+      -0.2323,
+      -0.1604
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1951
+    },
+    "Harmonic mean": {
+     "delta": -0.112,
+     "ci95": [
+      -0.1395,
+      -0.0856
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1119
+    },
+    "Arithmetic mean": {
+     "delta": -0.1885,
+     "ci95": [
+      -0.2227,
+      -0.1571
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1884
+    },
+    "Rank aggregation": {
+     "delta": -0.2078,
+     "ci95": [
+      -0.238,
+      -0.1773
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.2076
+    },
+    "Weighted rank": {
+     "delta": -0.1717,
+     "ci95": [
+      -0.2042,
+      -0.1396
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1714
+    }
+   },
+   "delta_bestcomposite_vs_bestsingle": {
+    "delta": -0.112,
+    "ci95": [
+     -0.1395,
+     -0.0856
+    ],
+    "p_one_sided": 0.99975,
+    "boot_mean": -0.1119,
+    "composite": "Harmonic mean",
+    "single": "OT genetics (PDAC)"
+   }
+  },
+  "E8 interaction label (canonical)": {
+   "definition": "interaction label: top 250 genes by norm(mutation_freq) minus norm(string_centrality)",
+   "n_pos": 250,
+   "label_dependent_layers": {
+    "mutation_freq": 0.5,
+    "string_centrality": 0.5
+   },
+   "overlap_score": 1.0,
+   "single_layer_auroc": {
+    "STRING centrality": 0.0214,
+    "Mutation frequency": 0.694,
+    "IMPC animal KO": 0.3637,
+    "Genetic constraint": 0.2247,
+    "Cancer-driver annotation": 0.494,
+    "OT genetics (PDAC)": 0.4898,
+    "Druggability": 0.4623,
+    "HPA PDAC prognostic": 0.2663,
+    "HPA RNA tissue spec": 0.4884
+   },
+   "composite_auroc": {
+    "ECS (multiplicative)": 0.8941,
+    "Additive": 0.0202,
+    "Geometric mean": 0.1191,
+    "Harmonic mean": 0.0573,
+    "Arithmetic mean": 0.1195,
+    "Rank aggregation": 0.3431,
+    "Weighted rank": 0.1692
+   },
+   "best_single": {
+    "name": "Mutation frequency",
+    "auroc": 0.694
+   },
+   "best_fixed_composite": {
+    "name": "ECS (multiplicative)",
+    "auroc": 0.8941
+   },
+   "delta_fixed_form_vs_best_single": {
+    "delta": 0.2001,
+    "ci95": [
+     0.1639,
+     0.237
+    ],
+    "p_one_sided": 0.00025,
+    "boot_mean": 0.2002
+   },
+   "supervised_auroc": {
+    "Logistic regression": 1.0,
+    "Elastic net": 1.0,
+    "Random forest": 1.0
+   },
+   "delta_rf_vs_best_single": {
+    "delta": 0.306,
+    "ci95": [
+     0.292,
+     0.3197
+    ],
+    "p_one_sided": 0.00025,
+    "boot_mean": 0.3063
+   },
+   "interpretation": "the best fixed-form rule (ECS) recovers 0.894 while the harmonic rule is nearly blind (0.057); a flexible supervised integrator learns the constructed label perfectly. Because the label is a function of the inputs (overlap = 1.0), the audit withholds information-gain attribution for BOTH."
+  }
+ },
+ "self_audit": {
+  "s1_trivial_transfer_baselines": {
+   "rf_transfer_pdac_to_crc": 0.8183,
+   "rf_transfer_crc_to_pdac": 0.8118,
+   "label_copy_binary_pdac_to_crc": 0.9291,
+   "label_copy_binary_crc_to_pdac": 0.9307,
+   "dependency_score_direct_pdac_to_crc": 0.9817,
+   "dependency_score_direct_crc_to_pdac": 0.9739,
+   "n_scored_continuous": 18353,
+   "verdict": "The supervised transfer AUROC is BELOW both trivial baselines: the transfer claim carries no information beyond label overlap; reported as label concordance, not generalization."
+  },
+  "s2_multiplicity": {
+   "family": "7 fixed-form composites + 3 supervised out-of-fold integrators, each vs the strongest single-layer baseline, across 6 real endpoints (E1, E4, E5, SelA, SelB==SelC, SelD); m = 60, every contrast with paired-bootstrap p (B=2000, seed 20260819); E7/E8 are controls and E6 the preregistered external evaluation, excluded with reasons",
+   "tests": [
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.2799,
+     "ci95": [
+      -0.2937,
+      -0.2654
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Additive",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1019,
+     "ci95": [
+      -0.1104,
+      -0.0935
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Geometric mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0966,
+     "ci95": [
+      -0.1058,
+      -0.0875
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Harmonic mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1199,
+     "ci95": [
+      -0.1293,
+      -0.1102
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Arithmetic mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1155,
+     "ci95": [
+      -0.1261,
+      -0.1055
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Rank aggregation",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1624,
+     "ci95": [
+      -0.1735,
+      -0.1518
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Weighted rank",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.061,
+     "ci95": [
+      -0.0662,
+      -0.0559
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0554,
+     "ci95": [
+      0.049,
+      0.0616
+     ],
+     "p_one_sided": 0.00025,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.0075
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0165,
+     "ci95": [
+      -0.0266,
+      -0.0071
+     ],
+     "p_one_sided": 0.99925,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Elastic net",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0236,
+     "ci95": [
+      -0.034,
+      -0.0139
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.2868,
+     "ci95": [
+      -0.2997,
+      -0.2726
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Additive",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1088,
+     "ci95": [
+      -0.117,
+      -0.1004
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Geometric mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1062,
+     "ci95": [
+      -0.115,
+      -0.097
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Harmonic mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1258,
+     "ci95": [
+      -0.1349,
+      -0.1162
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Arithmetic mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1216,
+     "ci95": [
+      -0.1312,
+      -0.1113
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Rank aggregation",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1678,
+     "ci95": [
+      -0.1785,
+      -0.1573
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Weighted rank",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0638,
+     "ci95": [
+      -0.0689,
+      -0.0588
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0545,
+     "ci95": [
+      0.048,
+      0.061
+     ],
+     "p_one_sided": 0.00025,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.0075
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0191,
+     "ci95": [
+      -0.029,
+      -0.0091
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Elastic net",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0271,
+     "ci95": [
+      -0.037,
+      -0.0167
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1616,
+     "ci95": [
+      -0.2446,
+      -0.0927
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Additive",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0379,
+     "ci95": [
+      -0.0727,
+      -0.0108
+     ],
+     "p_one_sided": 0.99775,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Geometric mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0731,
+     "ci95": [
+      -0.1262,
+      -0.0279
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Harmonic mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.045,
+     "ci95": [
+      -0.0854,
+      -0.0132
+     ],
+     "p_one_sided": 0.99775,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Arithmetic mean",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0918,
+     "ci95": [
+      -0.1519,
+      -0.0414
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Rank aggregation",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1322,
+     "ci95": [
+      -0.1993,
+      -0.0761
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Weighted rank",
+     "class": "fixed-form",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0298,
+     "ci95": [
+      -0.0649,
+      -0.0031
+     ],
+     "p_one_sided": 0.98726,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0444,
+     "ci95": [
+      -0.0976,
+      0.0006
+     ],
+     "p_one_sided": 0.97126,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0038,
+     "ci95": [
+      -0.0153,
+      0.0053
+     ],
+     "p_one_sided": 0.75887,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E5 clinical concordance",
+     "method": "Elastic net",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0873,
+     "ci95": [
+      -0.1757,
+      -0.0175
+     ],
+     "p_one_sided": 0.99575,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0882,
+     "ci95": [
+      -0.1282,
+      -0.0485
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Additive",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0159,
+     "ci95": [
+      -0.0643,
+      0.0308
+     ],
+     "p_one_sided": 0.75737,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Geometric mean",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0197,
+     "ci95": [
+      -0.0683,
+      0.0275
+     ],
+     "p_one_sided": 0.79035,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Harmonic mean",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0132,
+     "ci95": [
+      -0.0581,
+      0.0288
+     ],
+     "p_one_sided": 0.74688,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Arithmetic mean",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0056,
+     "ci95": [
+      -0.0425,
+      0.0289
+     ],
+     "p_one_sided": 0.63543,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Rank aggregation",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.05,
+     "ci95": [
+      -0.0958,
+      -0.0053
+     ],
+     "p_one_sided": 0.99075,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Weighted rank",
+     "class": "fixed-form",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0592,
+     "ci95": [
+      -0.1092,
+      -0.0138
+     ],
+     "p_one_sided": 0.99475,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0324,
+     "ci95": [
+      -0.016,
+      0.0824
+     ],
+     "p_one_sided": 0.1007,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.7552
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.015,
+     "ci95": [
+      -0.0529,
+      0.0218
+     ],
+     "p_one_sided": 0.78936,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "method": "Elastic net",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "Genetic constraint",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0447,
+     "ci95": [
+      -0.0927,
+      0.0014
+     ],
+     "p_one_sided": 0.97276,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0446,
+     "ci95": [
+      0.0009,
+      0.0891
+     ],
+     "p_one_sided": 0.02274,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.1949
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Additive",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1535,
+     "ci95": [
+      -0.2,
+      -0.1058
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Geometric mean",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.143,
+     "ci95": [
+      -0.1877,
+      -0.0948
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Harmonic mean",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1217,
+     "ci95": [
+      -0.1665,
+      -0.076
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Arithmetic mean",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1464,
+     "ci95": [
+      -0.1916,
+      -0.0979
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Rank aggregation",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1292,
+     "ci95": [
+      -0.178,
+      -0.0839
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Weighted rank",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.1717,
+     "ci95": [
+      -0.2236,
+      -0.1192
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0139,
+     "ci95": [
+      -0.0666,
+      0.0393
+     ],
+     "p_one_sided": 0.7074,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0471,
+     "ci95": [
+      0.014,
+      0.0794
+     ],
+     "p_one_sided": 0.00175,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.0262
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Elastic net",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0647,
+     "ci95": [
+      -0.1098,
+      -0.0199
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0666,
+     "ci95": [
+      0.0241,
+      0.1102
+     ],
+     "p_one_sided": 0.00075,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.015
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Additive",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0858,
+     "ci95": [
+      -0.1342,
+      -0.0377
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Geometric mean",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0726,
+     "ci95": [
+      -0.1194,
+      -0.0233
+     ],
+     "p_one_sided": 0.99925,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Harmonic mean",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0662,
+     "ci95": [
+      -0.1147,
+      -0.0183
+     ],
+     "p_one_sided": 0.99725,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Arithmetic mean",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0936,
+     "ci95": [
+      -0.1412,
+      -0.047
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Rank aggregation",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0902,
+     "ci95": [
+      -0.1382,
+      -0.0449
+     ],
+     "p_one_sided": 0.99975,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Weighted rank",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0777,
+     "ci95": [
+      -0.1329,
+      -0.0249
+     ],
+     "p_one_sided": 0.99625,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0552,
+     "ci95": [
+      0.0062,
+      0.1029
+     ],
+     "p_one_sided": 0.01424,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.1424
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0525,
+     "ci95": [
+      0.0107,
+      0.0916
+     ],
+     "p_one_sided": 0.00475,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.057
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "Elastic net",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": -0.0237,
+     "ci95": [
+      -0.0688,
+      0.0232
+     ],
+     "p_one_sided": 0.83433,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.9998
+    }
+   ],
+   "excluded": [
+    {
+     "endpoint": "SelC PDAC-selective (C_lineage_adj)",
+     "method": "all",
+     "reason": "identical to SelB in the frozen 26Q1 file (top-250 Jaccard 1.000); counted once as SelB"
+    },
+    {
+     "endpoint": "E7 genetic-association reuse",
+     "method": "all",
+     "reason": "audit control: label reuses an input layer by construction; excluded from the family"
+    },
+    {
+     "endpoint": "E8 interaction label (canonical)",
+     "method": "all",
+     "reason": "audit control: constructed interaction label; excluded from the family"
+    },
+    {
+     "endpoint": "E6 PDAC drug-response actionability",
+     "method": "all",
+     "reason": "preregistered external evaluation with its own audit criterion; reported separately, not in the exploratory family"
+    }
+   ],
+   "v33_change": "LR/EN contrasts now carry paired-bootstrap p; v27 substituted p=1.0 for them (conservative); family size and membership unchanged",
+   "survivors_bh_q_lt_0.05": [
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E1 PDAC pan-dependency",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0554,
+     "ci95": [
+      0.049,
+      0.0616
+     ],
+     "p_one_sided": 0.00025,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.0075
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "E4 CRC pan-dependency",
+     "method": "Random forest",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "STRING centrality",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0545,
+     "ci95": [
+      0.048,
+      0.061
+     ],
+     "p_one_sided": 0.00025,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.0075
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "method": "Logistic regression",
+     "class": "supervised (5-fold out-of-fold)",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0471,
+     "ci95": [
+      0.014,
+      0.0794
+     ],
+     "p_one_sided": 0.00175,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.0262
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "method": "ECS (multiplicative)",
+     "class": "fixed-form",
+     "baseline": "HPA RNA tissue spec",
+     "direction": "auroc(method)-auroc(baseline); positive = gain",
+     "delta": 0.0666,
+     "ci95": [
+      0.0241,
+      0.1102
+     ],
+     "p_one_sided": 0.00075,
+     "included_in_family": true,
+     "exclusion_reason": "",
+     "bh_q": 0.015
+    }
+   ]
+  },
+  "s3_repeated_cv": {
+   "E1 PDAC pan-dependency": {
+    "best_single": "STRING centrality",
+    "repeated_cv_delta": {
+     "Logistic regression": {
+      "deltas": [
+       -0.0171,
+       -0.0171,
+       -0.0166,
+       -0.0179,
+       -0.017,
+       -0.0175,
+       -0.0172,
+       -0.0172,
+       -0.0173,
+       -0.0182
+      ],
+      "mean": -0.0173,
+      "sd": 0.0004,
+      "min": -0.0182,
+      "max": -0.0166
+     },
+     "Elastic net": {
+      "deltas": [
+       -0.0246,
+       -0.0242,
+       -0.0238,
+       -0.0255,
+       -0.0242,
+       -0.0245,
+       -0.0244,
+       -0.0243,
+       -0.0248,
+       -0.0259
+      ],
+      "mean": -0.0246,
+      "sd": 0.0006,
+      "min": -0.0259,
+      "max": -0.0238
+     },
+     "Random forest": {
+      "deltas": [
+       0.0575,
+       0.0569,
+       0.0585,
+       0.0559,
+       0.0568,
+       0.0562,
+       0.058,
+       0.0561,
+       0.0566,
+       0.057
+      ],
+      "mean": 0.0569,
+      "sd": 0.0008,
+      "min": 0.0559,
+      "max": 0.0585
+     }
+    }
+   },
+   "E4 CRC pan-dependency": {
+    "best_single": "STRING centrality",
+    "repeated_cv_delta": {
+     "Logistic regression": {
+      "deltas": [
+       -0.0189,
+       -0.0189,
+       -0.0195,
+       -0.0193,
+       -0.0184,
+       -0.0187,
+       -0.0187,
+       -0.0188,
+       -0.0191,
+       -0.0192
+      ],
+      "mean": -0.0189,
+      "sd": 0.0003,
+      "min": -0.0195,
+      "max": -0.0184
+     },
+     "Elastic net": {
+      "deltas": [
+       -0.027,
+       -0.0273,
+       -0.0279,
+       -0.0276,
+       -0.0263,
+       -0.0266,
+       -0.0267,
+       -0.0271,
+       -0.027,
+       -0.0275
+      ],
+      "mean": -0.0271,
+      "sd": 0.0005,
+      "min": -0.0279,
+      "max": -0.0263
+     },
+     "Random forest": {
+      "deltas": [
+       0.0551,
+       0.0554,
+       0.0545,
+       0.0557,
+       0.0556,
+       0.0563,
+       0.0555,
+       0.0554,
+       0.056,
+       0.0565
+      ],
+      "mean": 0.0556,
+      "sd": 0.0006,
+      "min": 0.0545,
+      "max": 0.0565
+     }
+    }
+   }
+  },
+  "s4_strict_labels": {
+   "E1-strict": {
+    "n_pos": 1699,
+    "definition": "dependency_score > 0.5 (common-essential scale)",
+    "best_single": {
+     "name": "STRING centrality",
+     "auroc": 0.8197
+    },
+    "best_composite": {
+     "name": "Weighted rank",
+     "auroc": 0.7178
+    },
+    "delta_bestcomposite": {
+     "delta": -0.1018,
+     "ci95": [
+      -0.109,
+      -0.0943
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1018
+    },
+    "rf_oof_auroc": 0.8648,
+    "delta_rf": {
+     "delta": 0.0451,
+     "ci95": [
+      0.0389,
+      0.0511
+     ],
+     "p_one_sided": 0.00025,
+     "boot_mean": 0.0451
+    },
+    "table": {
+     "STRING centrality": 0.8197,
+     "Mutation frequency": 0.4968,
+     "IMPC animal KO": 0.5493,
+     "Genetic constraint": 0.4617,
+     "Cancer-driver annotation": 0.508,
+     "OT genetics (PDAC)": 0.508,
+     "Druggability": 0.5053,
+     "HPA PDAC prognostic": 0.6345,
+     "HPA RNA tissue spec": 0.3917,
+     "ECS (multiplicative)": 0.3822,
+     "Additive": 0.616,
+     "Geometric mean": 0.6212,
+     "Harmonic mean": 0.5858,
+     "Arithmetic mean": 0.567,
+     "Rank aggregation": 0.5216,
+     "Weighted rank": 0.7178,
+     "Logistic regression": 0.7626,
+     "Elastic net": 0.7471,
+     "Random forest": 0.8648
+    },
+    "repeated_cv_delta_rf": {
+     "deltas": [
+      0.0464,
+      0.0464,
+      0.046,
+      0.0465,
+      0.0467,
+      0.0462,
+      0.046,
+      0.0453,
+      0.0472,
+      0.0466
+     ],
+     "mean": 0.0463,
+     "sd": 0.0005,
+     "min": 0.0453,
+     "max": 0.0472
+    }
+   },
+   "E4-strict": {
+    "n_pos": 1742,
+    "definition": "dependency_score > 0.5 (common-essential scale)",
+    "best_single": {
+     "name": "STRING centrality",
+     "auroc": 0.8207
+    },
+    "best_composite": {
+     "name": "Weighted rank",
+     "auroc": 0.7163
+    },
+    "delta_bestcomposite": {
+     "delta": -0.1044,
+     "ci95": [
+      -0.112,
+      -0.0971
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1044
+    },
+    "rf_oof_auroc": 0.8671,
+    "delta_rf": {
+     "delta": 0.0465,
+     "ci95": [
+      0.0402,
+      0.0525
+     ],
+     "p_one_sided": 0.00025,
+     "boot_mean": 0.0465
+    },
+    "table": {
+     "STRING centrality": 0.8207,
+     "Mutation frequency": 0.4919,
+     "IMPC animal KO": 0.5473,
+     "Genetic constraint": 0.4691,
+     "Cancer-driver annotation": 0.507,
+     "OT genetics (PDAC)": 0.5078,
+     "Druggability": 0.5062,
+     "HPA PDAC prognostic": 0.6345,
+     "HPA RNA tissue spec": 0.3935,
+     "ECS (multiplicative)": 0.3853,
+     "Additive": 0.614,
+     "Geometric mean": 0.6193,
+     "Harmonic mean": 0.5852,
+     "Arithmetic mean": 0.5663,
+     "Rank aggregation": 0.5194,
+     "Weighted rank": 0.7163,
+     "Logistic regression": 0.782,
+     "Elastic net": 0.7551,
+     "Random forest": 0.8671
+    },
+    "repeated_cv_delta_rf": {
+     "deltas": [
+      0.0469,
+      0.048,
+      0.0485,
+      0.0465,
+      0.0473,
+      0.0462,
+      0.0465,
+      0.0465,
+      0.0468,
+      0.0452
+     ],
+     "mean": 0.0468,
+     "sd": 0.0009,
+     "min": 0.0452,
+     "max": 0.0485
+    }
+   }
+  },
+  "s5_annotation_poor_sensitivity": {
+   "subset_n": 12730,
+   "rule": "genes covered by >= 4 of 9 evidence layers",
+   "E1 PDAC pan-dependency": {
+    "best_single": {
+     "name": "STRING centrality",
+     "auroc": 0.6701
+    },
+    "best_composite": {
+     "name": "Weighted rank",
+     "auroc": 0.5963
+    },
+    "delta_bestcomposite": {
+     "delta": -0.0738,
+     "ci95": [
+      -0.0811,
+      -0.0671
+     ]
+    }
+   },
+   "SelA PDAC-selective (A_ratio)": {
+    "best_single": {
+     "name": "Mutation frequency",
+     "auroc": 0.5172
+    },
+    "best_composite": {
+     "name": "ECS (multiplicative)",
+     "auroc": 0.4756
+    },
+    "delta_bestcomposite": {
+     "delta": -0.0416,
+     "ci95": [
+      -0.1038,
+      0.0223
+     ]
+    }
+   },
+   "SelB PDAC-selective (B_zeffect==C)": {
+    "best_single": {
+     "name": "HPA RNA tissue spec",
+     "auroc": 0.5501
+    },
+    "best_composite": {
+     "name": "ECS (multiplicative)",
+     "auroc": 0.5237
+    },
+    "delta_bestcomposite": {
+     "delta": -0.0264,
+     "ci95": [
+      -0.0852,
+      0.029
+     ]
+    }
+   },
+   "SelD PDAC-selective (D_mixed)": {
+    "best_single": {
+     "name": "STRING centrality",
+     "auroc": 0.5666
+    },
+    "best_composite": {
+     "name": "Weighted rank",
+     "auroc": 0.5502
+    },
+    "delta_bestcomposite": {
+     "delta": -0.0164,
+     "ci95": [
+      -0.0496,
+      0.0139
+     ]
+    }
+   },
+   "selB_top250_composition": {
+    "mean_coverage": 3.4,
+    "n_below_4_layers": 130,
+    "example_top_genes": [
+     "OR14A2",
+     "NUDT18",
+     "FER1L5",
+     "TEX52",
+     "SDR42E2",
+     "SELENOF",
+     "TTLL8",
+     "SMIM34",
+     "MSANTD5",
+     "DGKK",
+     "ZNF316",
+     "POLDIP2"
+    ],
+    "note": "olfactory-receptor / testis-enriched genes dominate the top of the list (classic CRISPR low-expression artifact territory); DepMap expression/CNV layers are not in the frozen inputs, so coverage-based filtering is used as the declared proxy"
+   }
+  },
+  "s6b_single_layer_nulls": {
+   "E1 PDAC pan-dependency": {
+    "mutation_freq": {
+     "observed": 0.4991,
+     "null_mean": 0.4991,
+     "null_sd": 0.0,
+     "z": 0.0,
+     "p_emp_ge": 0.9995
+    },
+    "impc_animal_ko": {
+     "observed": 0.5478,
+     "null_mean": 0.5478,
+     "null_sd": 0.0,
+     "z": -0.0,
+     "p_emp_ge": 0.9995
+    },
+    "genetic_constraint": {
+     "observed": 0.524,
+     "null_mean": 0.524,
+     "null_sd": 0.0,
+     "z": 0.0,
+     "p_emp_ge": 0.9995
+    },
+    "cancer_driver": {
+     "observed": 0.5067,
+     "null_mean": 0.5067,
+     "null_sd": 0.0,
+     "z": 0.0,
+     "p_emp_ge": 0.9995
+    },
+    "ot_genetics_pdac": {
+     "observed": 0.5044,
+     "null_mean": 0.5044,
+     "null_sd": 0.0,
+     "z": 0.3,
+     "p_emp_ge": 0.3811
+    },
+    "druggability": {
+     "observed": 0.5072,
+     "null_mean": 0.5065,
+     "null_sd": 0.0004,
+     "z": 1.46,
+     "p_emp_ge": 0.0774
+    },
+    "hpa_pdac_prognostic": {
+     "observed": 0.6056,
+     "null_mean": 0.6021,
+     "null_sd": 0.0017,
+     "z": 2.13,
+     "p_emp_ge": 0.0195
+    },
+    "hpa_rna_tissue_spec": {
+     "observed": 0.4272,
+     "null_mean": 0.4277,
+     "null_sd": 0.0004,
+     "z": -1.24,
+     "p_emp_ge": 0.8996
+    }
+   },
+   "E4 CRC pan-dependency": {
+    "mutation_freq": {
+     "observed": 0.4971,
+     "null_mean": 0.4971,
+     "null_sd": 0.0,
+     "z": -0.0,
+     "p_emp_ge": 0.9995
+    },
+    "impc_animal_ko": {
+     "observed": 0.5456,
+     "null_mean": 0.5456,
+     "null_sd": 0.0,
+     "z": -0.0,
+     "p_emp_ge": 0.9995
+    },
+    "genetic_constraint": {
+     "observed": 0.5303,
+     "null_mean": 0.5303,
+     "null_sd": 0.0,
+     "z": -0.0,
+     "p_emp_ge": 0.9995
+    },
+    "cancer_driver": {
+     "observed": 0.5075,
+     "null_mean": 0.5075,
+     "null_sd": 0.0,
+     "z": 0.0,
+     "p_emp_ge": 0.9995
+    },
+    "ot_genetics_pdac": {
+     "observed": 0.5042,
+     "null_mean": 0.5042,
+     "null_sd": 0.0,
+     "z": 0.87,
+     "p_emp_ge": 0.1883
+    },
+    "druggability": {
+     "observed": 0.5064,
+     "null_mean": 0.506,
+     "null_sd": 0.0004,
+     "z": 1.07,
+     "p_emp_ge": 0.1513
+    },
+    "hpa_pdac_prognostic": {
+     "observed": 0.6083,
+     "null_mean": 0.6049,
+     "null_sd": 0.0017,
+     "z": 2.05,
+     "p_emp_ge": 0.0195
+    },
+    "hpa_rna_tissue_spec": {
+     "observed": 0.4263,
+     "null_mean": 0.4267,
+     "null_sd": 0.0004,
+     "z": -0.99,
+     "p_emp_ge": 0.8337
+    }
+   }
+  },
+  "s9_mde": {
+   "note": "80%-power minimum detectable effect = 2.8 x SE (two-sided alpha 0.05), SE from bootstrap CI width",
+   "table": {
+    "E1 PDAC pan-dependency": {
+     "se": 0.0026,
+     "mde_80pct": 0.0074
+    },
+    "E4 CRC pan-dependency": {
+     "se": 0.0026,
+     "mde_80pct": 0.0072
+    },
+    "E5 clinical concordance": {
+     "se": 0.0158,
+     "mde_80pct": 0.0441
+    },
+    "SelA PDAC-selective (A_ratio)": {
+     "se": 0.0182,
+     "mde_80pct": 0.051
+    },
+    "SelB PDAC-selective (B_zeffect==C)": {
+     "se": 0.0225,
+     "mde_80pct": 0.063
+    },
+    "SelD PDAC-selective (D_mixed)": {
+     "se": 0.022,
+     "mde_80pct": 0.0615
+    },
+    "E1 RF": {
+     "se": 0.0032,
+     "mde_80pct": 0.009
+    }
+   }
+  },
+  "s10_no_label_sensitivity": {
+   "n_labelled": 18448,
+   "e1_auroc_labelled_subset": {
+    "STRING centrality": 0.6628,
+    "Harmonic mean": 0.5189
+   },
+   "note": "unlabelled genes are forced negatives in the main analysis; on the labelled subset the AUROC ordering is unchanged (full audit on the subset available on request)"
+  },
+  "e5_provenance_regrade": {
+   "druggability_auroc": 0.8082,
+   "ot_genetics_auroc": 0.8372,
+   "string_centrality_auroc": 0.9861,
+   "v27_grade": "correlated source (was: independent source in v26)",
+   "note": "the 35-gene curated label overlaps the druggability concept; centrality 0.986 on E5 is the strongest popularity fingerprint in the study and is discussed as such"
+  },
+  "s12_missingness_decomposition": {
+   "E1 PDAC pan-dependency": {
+    "full_values_plus_missingness": 0.5752,
+    "values_only": 0.5801,
+    "missingness_only_composite": 0.5542,
+    "coverage_count": 0.5727,
+    "delta_missingness_only_minus_full": -0.021,
+    "per_layer_coverage_auroc": {
+     "string_centrality": 0.5267,
+     "mutation_freq": 0.5098,
+     "impc_animal_ko": 0.5465,
+     "genetic_constraint": 0.5752,
+     "cancer_driver": 0.5067,
+     "ot_genetics_pdac": 0.5044,
+     "druggability": 0.5018,
+     "hpa_pdac_prognostic": 0.6005,
+     "hpa_rna_tissue_spec": 0.4278
+    },
+    "interpretation": "values carry discrimination beyond the coverage pattern"
+   },
+   "E4 CRC pan-dependency": {
+    "full_values_plus_missingness": 0.576,
+    "values_only": 0.5848,
+    "missingness_only_composite": 0.554,
+    "coverage_count": 0.5725,
+    "delta_missingness_only_minus_full": -0.022,
+    "per_layer_coverage_auroc": {
+     "string_centrality": 0.5277,
+     "mutation_freq": 0.5062,
+     "impc_animal_ko": 0.5449,
+     "genetic_constraint": 0.5784,
+     "cancer_driver": 0.5075,
+     "ot_genetics_pdac": 0.5042,
+     "druggability": 0.501,
+     "hpa_pdac_prognostic": 0.6032,
+     "hpa_rna_tissue_spec": 0.4268
+    },
+    "interpretation": "values carry discrimination beyond the coverage pattern"
+   },
+   "E5 clinical concordance": {
+    "full_values_plus_missingness": 0.9412,
+    "values_only": 0.875,
+    "missingness_only_composite": 0.9321,
+    "coverage_count": 0.882,
+    "delta_missingness_only_minus_full": -0.009,
+    "per_layer_coverage_auroc": {
+     "string_centrality": 0.5272,
+     "mutation_freq": 0.6445,
+     "impc_animal_ko": 0.5832,
+     "genetic_constraint": 0.575,
+     "cancer_driver": 0.7374,
+     "ot_genetics_pdac": 0.8314,
+     "druggability": 0.7611,
+     "hpa_pdac_prognostic": 0.6257,
+     "hpa_rna_tissue_spec": 0.4157
+    },
+    "interpretation": "coverage pattern alone recovers most of the composite's discrimination"
+   },
+   "SelA PDAC-selective (A_ratio)": {
+    "full_values_plus_missingness": 0.5299,
+    "values_only": 0.4872,
+    "missingness_only_composite": 0.529,
+    "coverage_count": 0.5374,
+    "delta_missingness_only_minus_full": -0.0009,
+    "per_layer_coverage_auroc": {
+     "string_centrality": 0.5194,
+     "mutation_freq": 0.5296,
+     "impc_animal_ko": 0.5126,
+     "genetic_constraint": 0.5345,
+     "cancer_driver": 0.4961,
+     "ot_genetics_pdac": 0.4939,
+     "druggability": 0.5036,
+     "hpa_pdac_prognostic": 0.5234,
+     "hpa_rna_tissue_spec": 0.4936
+    },
+    "interpretation": "coverage pattern alone recovers most of the composite's discrimination"
+   },
+   "SelB PDAC-selective (B_zeffect==C)": {
+    "full_values_plus_missingness": 0.4405,
+    "values_only": 0.4388,
+    "missingness_only_composite": 0.4366,
+    "coverage_count": 0.4139,
+    "delta_missingness_only_minus_full": -0.0039,
+    "per_layer_coverage_auroc": {
+     "string_centrality": 0.5108,
+     "mutation_freq": 0.4233,
+     "impc_animal_ko": 0.4474,
+     "genetic_constraint": 0.4513,
+     "cancer_driver": 0.4982,
+     "ot_genetics_pdac": 0.4983,
+     "druggability": 0.4697,
+     "hpa_pdac_prognostic": 0.4347,
+     "hpa_rna_tissue_spec": 0.5615
+    },
+    "interpretation": "coverage pattern alone recovers most of the composite's discrimination"
+   },
+   "SelD PDAC-selective (D_mixed)": {
+    "full_values_plus_missingness": 0.4551,
+    "values_only": 0.48,
+    "missingness_only_composite": 0.4474,
+    "coverage_count": 0.4256,
+    "delta_missingness_only_minus_full": -0.0076,
+    "per_layer_coverage_auroc": {
+     "string_centrality": 0.5109,
+     "mutation_freq": 0.4392,
+     "impc_animal_ko": 0.4531,
+     "genetic_constraint": 0.4564,
+     "cancer_driver": 0.5024,
+     "ot_genetics_pdac": 0.5065,
+     "druggability": 0.4776,
+     "hpa_pdac_prognostic": 0.4584,
+     "hpa_rna_tissue_spec": 0.5213
+    },
+    "interpretation": "coverage pattern alone recovers most of the composite's discrimination"
+   }
+  },
+  "s7_pairwise_inversion_proportion": {
+   "definition": "A gene pair is comparable when both genes carry a composite score and a component-consensus rank (each gene covered by at least one input layer; every gene in the 20,751-gene union qualifies). I is the fraction of comparable sampled pairs in which the composite ordering disagrees with the majority-consensus ordering. Estimated from 2,000,000 sampled pairs (seed 20260819+3); Wilson 95% CI. v33 redefinition: the v27 archived definition required all eight component layers to cover both genes, which is empty on the frozen universe (8-layer intersection = 0 genes; cancer_driver covers 245, ot_genetics_pdac 500) and produced n = 0 comparable pairs; the v27 archived 1,847,559-pair rates were not reproducible from the archived v27 code plus the frozen inputs and are superseded by this explicit definition.",
+   "rates": {
+    "Harmonic mean": {
+     "n_pairs": 1999552,
+     "inversions": 858169,
+     "I_pairwise_inversion": 0.4292,
+     "ci95_wilson": [
+      0.4285,
+      0.4299
+     ],
+     "I_both_high_coverage": 0.4171,
+     "I_mixed_coverage": 0.4381,
+     "I_both_low_coverage": 0.378
+    },
+    "ECS (multiplicative)": {
+     "n_pairs": 1999555,
+     "inversions": 1081301,
+     "I_pairwise_inversion": 0.5408,
+     "ci95_wilson": [
+      0.5401,
+      0.5415
+     ],
+     "I_both_high_coverage": 0.3712,
+     "I_mixed_coverage": 0.5266,
+     "I_both_low_coverage": 0.623
+    },
+    "Additive": {
+     "n_pairs": 1999547,
+     "inversions": 856236,
+     "I_pairwise_inversion": 0.4282,
+     "ci95_wilson": [
+      0.4275,
+      0.4289
+     ],
+     "I_both_high_coverage": 0.3907,
+     "I_mixed_coverage": 0.4386,
+     "I_both_low_coverage": 0.3679
+    },
+    "Geometric mean": {
+     "n_pairs": 1971278,
+     "inversions": 856105,
+     "I_pairwise_inversion": 0.4343,
+     "ci95_wilson": [
+      0.4336,
+      0.435
+     ],
+     "I_both_high_coverage": 0.3601,
+     "I_mixed_coverage": 0.4433,
+     "I_both_low_coverage": 0.3771
+    },
+    "Arithmetic mean": {
+     "n_pairs": 1999312,
+     "inversions": 864583,
+     "I_pairwise_inversion": 0.4324,
+     "ci95_wilson": [
+      0.4318,
+      0.4331
+     ],
+     "I_both_high_coverage": 0.3987,
+     "I_mixed_coverage": 0.4458,
+     "I_both_low_coverage": 0.3557
+    },
+    "Rank aggregation": {
+     "n_pairs": 1999882,
+     "inversions": 1035796,
+     "I_pairwise_inversion": 0.5179,
+     "ci95_wilson": [
+      0.5172,
+      0.5186
+     ],
+     "I_both_high_coverage": 0.5241,
+     "I_mixed_coverage": 0.5223,
+     "I_both_low_coverage": 0.4928
+    },
+    "Weighted rank": {
+     "n_pairs": 1999876,
+     "inversions": 846238,
+     "I_pairwise_inversion": 0.4231,
+     "ci95_wilson": [
+      0.4225,
+      0.4238
+     ],
+     "I_both_high_coverage": 0.4021,
+     "I_mixed_coverage": 0.4266,
+     "I_both_low_coverage": 0.4029
+    }
+   }
+  },
+  "s13_aggregation_robustness": {
+   "note": "computed jointly with S7 in 16.2; the inversion statistic is endpoint-independent (composite scores and the consensus do not depend on the endpoint), so v33 reports it once per composite across all seven fixed-form rules (the earlier draft duplicated it per endpoint)",
+   "per_composite": {
+    "Harmonic mean": {
+     "kendall_tau_vs_consensus": 0.143,
+     "spearman_rho_vs_consensus": 0.2068,
+     "I_pairwise_inversion": 0.4292,
+     "inversion_both_high_coverage": 0.4171,
+     "inversion_mixed_coverage": 0.4381,
+     "inversion_both_low_coverage": 0.378,
+     "n_pairs": 1999552
+    },
+    "ECS (multiplicative)": {
+     "kendall_tau_vs_consensus": -0.0825,
+     "spearman_rho_vs_consensus": -0.1201,
+     "I_pairwise_inversion": 0.5408,
+     "inversion_both_high_coverage": 0.3712,
+     "inversion_mixed_coverage": 0.5266,
+     "inversion_both_low_coverage": 0.623,
+     "n_pairs": 1999555
+    },
+    "Additive": {
+     "kendall_tau_vs_consensus": 0.1444,
+     "spearman_rho_vs_consensus": 0.2092,
+     "I_pairwise_inversion": 0.4282,
+     "inversion_both_high_coverage": 0.3907,
+     "inversion_mixed_coverage": 0.4386,
+     "inversion_both_low_coverage": 0.3679,
+     "n_pairs": 1999547
+    },
+    "Geometric mean": {
+     "kendall_tau_vs_consensus": 0.1314,
+     "spearman_rho_vs_consensus": 0.1912,
+     "I_pairwise_inversion": 0.4343,
+     "inversion_both_high_coverage": 0.3601,
+     "inversion_mixed_coverage": 0.4433,
+     "inversion_both_low_coverage": 0.3771,
+     "n_pairs": 1971278
+    },
+    "Arithmetic mean": {
+     "kendall_tau_vs_consensus": 0.1345,
+     "spearman_rho_vs_consensus": 0.1938,
+     "I_pairwise_inversion": 0.4324,
+     "inversion_both_high_coverage": 0.3987,
+     "inversion_mixed_coverage": 0.4458,
+     "inversion_both_low_coverage": 0.3557,
+     "n_pairs": 1999312
+    },
+    "Rank aggregation": {
+     "kendall_tau_vs_consensus": -0.0367,
+     "spearman_rho_vs_consensus": -0.067,
+     "I_pairwise_inversion": 0.5179,
+     "inversion_both_high_coverage": 0.5241,
+     "inversion_mixed_coverage": 0.5223,
+     "inversion_both_low_coverage": 0.4928,
+     "n_pairs": 1999882
+    },
+    "Weighted rank": {
+     "kendall_tau_vs_consensus": 0.1537,
+     "spearman_rho_vs_consensus": 0.2282,
+     "I_pairwise_inversion": 0.4231,
+     "inversion_both_high_coverage": 0.4021,
+     "inversion_mixed_coverage": 0.4266,
+     "inversion_both_low_coverage": 0.4029,
+     "n_pairs": 1999876
+    }
+   }
+  },
+  "s14_nested_cv_sensitivity": {
+   "E1 PDAC pan-dependency": {
+    "Random forest": {
+     "delta": 0.0576,
+     "ci95": [
+      0.0518,
+      0.0634
+     ],
+     "p_one_sided": 0.00025,
+     "boot_mean": 0.0575,
+     "nested_oof_auroc": 0.7527,
+     "best_config_per_outer_fold": [
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      }
+     ]
+    },
+    "Logistic regression": {
+     "delta": -0.0177,
+     "ci95": [
+      -0.0277,
+      -0.0081
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0177,
+     "nested_oof_auroc": 0.6774,
+     "best_config_per_outer_fold": [
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      }
+     ]
+    },
+    "Elastic net": {
+     "delta": -0.0257,
+     "ci95": [
+      -0.036,
+      -0.016
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0258,
+     "nested_oof_auroc": 0.6694,
+     "best_config_per_outer_fold": [
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.5
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      },
+      {
+       "alpha": 0.1,
+       "l1_ratio": 0.1
+      }
+     ]
+    }
+   },
+   "E4 CRC pan-dependency": {
+    "Random forest": {
+     "delta": 0.0571,
+     "ci95": [
+      0.0511,
+      0.0631
+     ],
+     "p_one_sided": 0.00025,
+     "boot_mean": 0.0571,
+     "nested_oof_auroc": 0.7589,
+     "best_config_per_outer_fold": [
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 500,
+       "max_depth": 8
+      },
+      {
+       "n_estimators": 100,
+       "max_depth": 8
+      }
+     ]
+    },
+    "Logistic regression": {
+     "delta": -0.0186,
+     "ci95": [
+      -0.0286,
+      -0.0087
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0186,
+     "nested_oof_auroc": 0.6832,
+     "best_config_per_outer_fold": [
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      },
+      {
+       "C": 10.0
+      }
+     ]
+    },
+    "Elastic net": {
+     "delta": -0.0265,
+     "ci95": [
+      -0.0367,
+      -0.0163
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.0265,
+     "nested_oof_auroc": 0.6753,
+     "best_config_per_outer_fold": [
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.5
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      },
+      {
+       "alpha": 0.01,
+       "l1_ratio": 0.1
+      }
+     ]
+    }
+   }
+  }
+ },
+ "v33": {
+  "provenance_gradient": {
+   "design": "true positives replaced fraction theta by genes merely annotated in the druggability layer; coverage constant; theta=0 coverage-controlled E1, theta=1 E3-like pathology",
+   "rows": [
+    {
+     "theta": 0.0,
+     "n_pos": 3329,
+     "n_leaky_positives": 0,
+     "centrality_auroc": 0.692,
+     "harmonic_auroc": 0.6168,
+     "harmonic_delta_vs_centrality": -0.0753,
+     "druggability_auroc": 0.5653
+    },
+    {
+     "theta": 0.25,
+     "n_pos": 3326,
+     "n_leaky_positives": 1146,
+     "centrality_auroc": 0.6171,
+     "harmonic_auroc": 0.5949,
+     "harmonic_delta_vs_centrality": -0.0221,
+     "druggability_auroc": 0.5556
+    },
+    {
+     "theta": 0.5,
+     "n_pos": 3958,
+     "n_leaky_positives": 2292,
+     "centrality_auroc": 0.6041,
+     "harmonic_auroc": 0.7027,
+     "harmonic_delta_vs_centrality": 0.0986,
+     "druggability_auroc": 0.6994
+    },
+    {
+     "theta": 0.75,
+     "n_pos": 4436,
+     "n_leaky_positives": 3438,
+     "centrality_auroc": 0.5865,
+     "harmonic_auroc": 0.7962,
+     "harmonic_delta_vs_centrality": 0.2097,
+     "druggability_auroc": 0.8295
+    },
+    {
+     "theta": 1.0,
+     "n_pos": 2523,
+     "n_leaky_positives": 4584,
+     "centrality_auroc": 0.568,
+     "harmonic_auroc": 0.866,
+     "harmonic_delta_vs_centrality": 0.298,
+     "druggability_auroc": 0.9229
+    }
+   ],
+   "spearman_rho_theta_vs_delta": 1.0,
+   "monotone_increasing": true
+  },
+  "provenance_endpoint_family": {
+   "E2 PDAC-enriched dependency": {
+    "n_pos": 1147,
+    "centrality_auroc": 0.6014,
+    "single_layer_auroc": {
+     "STRING centrality": 0.6014,
+     "Mutation frequency": 0.4913,
+     "IMPC animal KO": 0.5393,
+     "Genetic constraint": 0.4963,
+     "Cancer-driver annotation": 0.5062,
+     "OT genetics (PDAC)": 0.5058,
+     "Druggability": 0.5262,
+     "HPA PDAC prognostic": 0.5652,
+     "HPA RNA tissue spec": 0.4609
+    },
+    "best_single": {
+     "name": "STRING centrality",
+     "auroc": 0.6014
+    },
+    "composites": {
+     "ECS (multiplicative)": {
+      "auroc": 0.4688,
+      "delta_vs_centrality": -0.1326,
+      "delta_vs_best_single": -0.1326
+     },
+     "Additive": {
+      "auroc": 0.5687,
+      "delta_vs_centrality": -0.0327,
+      "delta_vs_best_single": -0.0327
+     },
+     "Geometric mean": {
+      "auroc": 0.57,
+      "delta_vs_centrality": -0.0314,
+      "delta_vs_best_single": -0.0314
+     },
+     "Harmonic mean": {
+      "auroc": 0.5666,
+      "delta_vs_centrality": -0.0348,
+      "delta_vs_best_single": -0.0348
+     },
+     "Arithmetic mean": {
+      "auroc": 0.5612,
+      "delta_vs_centrality": -0.0401,
+      "delta_vs_best_single": -0.0402
+     },
+     "Rank aggregation": {
+      "auroc": 0.5177,
+      "delta_vs_centrality": -0.0837,
+      "delta_vs_best_single": -0.0837
+     },
+     "Weighted rank": {
+      "auroc": 0.5749,
+      "delta_vs_centrality": -0.0264,
+      "delta_vs_best_single": -0.0265
+     }
+    },
+    "harmonic_no_druggability": 0.559,
+    "representation": {
+     "harmonic_sentinel_as_value": 0.5666,
+     "harmonic_available_case": 0.5866
+    }
+   },
+   "E3 conjunctive actionability": {
+    "n_pos": 1159,
+    "centrality_auroc": 0.7385,
+    "single_layer_auroc": {
+     "STRING centrality": 0.7385,
+     "Mutation frequency": 0.5198,
+     "IMPC animal KO": 0.5369,
+     "Genetic constraint": 0.5592,
+     "Cancer-driver annotation": 0.5212,
+     "OT genetics (PDAC)": 0.5239,
+     "Druggability": 0.9147,
+     "HPA PDAC prognostic": 0.5886,
+     "HPA RNA tissue spec": 0.4393
+    },
+    "best_single": {
+     "name": "Druggability",
+     "auroc": 0.9147
+    },
+    "composites": {
+     "ECS (multiplicative)": {
+      "auroc": 0.6931,
+      "delta_vs_centrality": -0.0454,
+      "delta_vs_best_single": -0.2216
+     },
+     "Additive": {
+      "auroc": 0.8247,
+      "delta_vs_centrality": 0.0862,
+      "delta_vs_best_single": -0.09
+     },
+     "Geometric mean": {
+      "auroc": 0.7578,
+      "delta_vs_centrality": 0.0193,
+      "delta_vs_best_single": -0.1569
+     },
+     "Harmonic mean": {
+      "auroc": 0.8926,
+      "delta_vs_centrality": 0.1541,
+      "delta_vs_best_single": -0.0221
+     },
+     "Arithmetic mean": {
+      "auroc": 0.8321,
+      "delta_vs_centrality": 0.0936,
+      "delta_vs_best_single": -0.0826
+     },
+     "Rank aggregation": {
+      "auroc": 0.6363,
+      "delta_vs_centrality": -0.1021,
+      "delta_vs_best_single": -0.2784
+     },
+     "Weighted rank": {
+      "auroc": 0.8345,
+      "delta_vs_centrality": 0.096,
+      "delta_vs_best_single": -0.0802
+     }
+    },
+    "harmonic_no_druggability": 0.6174,
+    "representation": {
+     "harmonic_sentinel_as_value": 0.8926,
+     "harmonic_available_case": 0.8704
+    }
+   },
+   "E3-A leakage-controlled essentiality": {
+    "n_pos": 4584,
+    "centrality_auroc": 0.6951,
+    "single_layer_auroc": {
+     "STRING centrality": 0.6951,
+     "Mutation frequency": 0.4991,
+     "IMPC animal KO": 0.5478,
+     "Genetic constraint": 0.524,
+     "Cancer-driver annotation": 0.5067,
+     "OT genetics (PDAC)": 0.5044,
+     "Druggability": 0.5072,
+     "HPA PDAC prognostic": 0.6056,
+     "HPA RNA tissue spec": 0.4272
+    },
+    "best_single": {
+     "name": "STRING centrality",
+     "auroc": 0.6951
+    },
+    "composites": {
+     "ECS (multiplicative)": {
+      "auroc": 0.4152,
+      "delta_vs_centrality": -0.2799,
+      "delta_vs_best_single": -0.2799
+     },
+     "Additive": {
+      "auroc": 0.5932,
+      "delta_vs_centrality": -0.1019,
+      "delta_vs_best_single": -0.1019
+     },
+     "Geometric mean": {
+      "auroc": 0.5985,
+      "delta_vs_centrality": -0.0966,
+      "delta_vs_best_single": -0.0966
+     },
+     "Harmonic mean": {
+      "auroc": 0.5752,
+      "delta_vs_centrality": -0.1199,
+      "delta_vs_best_single": -0.1199
+     },
+     "Arithmetic mean": {
+      "auroc": 0.5796,
+      "delta_vs_centrality": -0.1155,
+      "delta_vs_best_single": -0.1155
+     },
+     "Rank aggregation": {
+      "auroc": 0.5327,
+      "delta_vs_centrality": -0.1624,
+      "delta_vs_best_single": -0.1624
+     },
+     "Weighted rank": {
+      "auroc": 0.6341,
+      "delta_vs_centrality": -0.061,
+      "delta_vs_best_single": -0.061
+     }
+    },
+    "harmonic_no_druggability": 0.5915,
+    "representation": {
+     "harmonic_sentinel_as_value": 0.5752,
+     "harmonic_available_case": 0.6272
+    }
+   },
+   "E3-C out-of-evidence druggability": {
+    "n_pos": 5188,
+    "centrality_auroc": 0.6203,
+    "single_layer_auroc": {
+     "STRING centrality": 0.6203,
+     "Mutation frequency": 0.5628,
+     "IMPC animal KO": 0.518,
+     "Genetic constraint": 0.6427,
+     "Cancer-driver annotation": 0.5109,
+     "OT genetics (PDAC)": 0.5146,
+     "Druggability": 1.0,
+     "HPA PDAC prognostic": 0.5282,
+     "HPA RNA tissue spec": 0.4976
+    },
+    "best_single": {
+     "name": "Druggability",
+     "auroc": 1.0
+    },
+    "composites": {
+     "ECS (multiplicative)": {
+      "auroc": 0.7172,
+      "delta_vs_centrality": 0.0969,
+      "delta_vs_best_single": -0.2828
+     },
+     "Additive": {
+      "auroc": 0.8395,
+      "delta_vs_centrality": 0.2192,
+      "delta_vs_best_single": -0.1605
+     },
+     "Geometric mean": {
+      "auroc": 0.769,
+      "delta_vs_centrality": 0.1487,
+      "delta_vs_best_single": -0.231
+     },
+     "Harmonic mean": {
+      "auroc": 0.9357,
+      "delta_vs_centrality": 0.3154,
+      "delta_vs_best_single": -0.0643
+     },
+     "Arithmetic mean": {
+      "auroc": 0.8741,
+      "delta_vs_centrality": 0.2538,
+      "delta_vs_best_single": -0.1259
+     },
+     "Rank aggregation": {
+      "auroc": 0.6789,
+      "delta_vs_centrality": 0.0586,
+      "delta_vs_best_single": -0.3211
+     },
+     "Weighted rank": {
+      "auroc": 0.8083,
+      "delta_vs_centrality": 0.1881,
+      "delta_vs_best_single": -0.1917
+     }
+    },
+    "harmonic_no_druggability": 0.5824,
+    "representation": {
+     "harmonic_sentinel_as_value": 0.9357,
+     "harmonic_available_case": 0.895
+    }
+   }
+  },
+  "e6_external_drug_response": {
+   "available": true,
+   "n_positives": 32,
+   "n_drugs": 125,
+   "n_pancreas_lines": 29,
+   "construction": "GDSC1 median IC50 across pancreatic CCLE lines; tercile split; positives = targets of most-sensitive tercile minus targets of least-sensitive tercile (frozen v19 construction, deterministic)",
+   "baseline_centrality_auroc": 0.9103,
+   "best_single": {
+    "name": "STRING centrality",
+    "auroc": 0.9103
+   },
+   "single_layer_auroc": {
+    "STRING centrality": 0.9103,
+    "Mutation frequency": 0.5666,
+    "IMPC animal KO": 0.5001,
+    "Genetic constraint": 0.3706,
+    "Cancer-driver annotation": 0.6349,
+    "OT genetics (PDAC)": 0.6617,
+    "Druggability": 0.7805,
+    "HPA PDAC prognostic": 0.6034,
+    "HPA RNA tissue spec": 0.4958
+   },
+   "composites_vs_best_single": {
+    "ECS (multiplicative)": {
+     "delta": -0.2055,
+     "ci95": [
+      -0.3301,
+      -0.0872
+     ],
+     "p_one_sided": 0.99825,
+     "boot_mean": -0.2079,
+     "auroc": 0.7048,
+     "delta_vs_centrality": -0.2055
+    },
+    "Additive": {
+     "delta": -0.0825,
+     "ci95": [
+      -0.1481,
+      -0.0224
+     ],
+     "p_one_sided": 0.99675,
+     "boot_mean": -0.0836,
+     "auroc": 0.8278,
+     "delta_vs_centrality": -0.0825
+    },
+    "Geometric mean": {
+     "delta": -0.1565,
+     "ci95": [
+      -0.2453,
+      -0.0727
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1576,
+     "auroc": 0.7539,
+     "delta_vs_centrality": -0.1564
+    },
+    "Harmonic mean": {
+     "delta": -0.0647,
+     "ci95": [
+      -0.1343,
+      -0.0035
+     ],
+     "p_one_sided": 0.98126,
+     "boot_mean": -0.0658,
+     "auroc": 0.8456,
+     "delta_vs_centrality": -0.0647
+    },
+    "Arithmetic mean": {
+     "delta": -0.1784,
+     "ci95": [
+      -0.2863,
+      -0.0828
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.1802,
+     "auroc": 0.7319,
+     "delta_vs_centrality": -0.1784
+    },
+    "Rank aggregation": {
+     "delta": -0.1247,
+     "ci95": [
+      -0.2171,
+      -0.0474
+     ],
+     "p_one_sided": 0.99825,
+     "boot_mean": -0.1258,
+     "auroc": 0.7856,
+     "delta_vs_centrality": -0.1247
+    },
+    "Weighted rank": {
+     "delta": -0.0045,
+     "ci95": [
+      -0.0508,
+      0.0374
+     ],
+     "p_one_sided": 0.58246,
+     "boot_mean": -0.0052,
+     "auroc": 0.9058,
+     "delta_vs_centrality": -0.0045
+    }
+   },
+   "supervised_vs_best_single": {
+    "Logistic regression": {
+     "delta": -0.0005,
+     "ci95": [
+      -0.0356,
+      0.0329
+     ],
+     "p_one_sided": 0.52199,
+     "boot_mean": -0.0009,
+     "auroc": 0.9098,
+     "delta_vs_centrality": -0.0005
+    },
+    "Elastic net": {
+     "delta": -0.4291,
+     "ci95": [
+      -0.5505,
+      -0.3103
+     ],
+     "p_one_sided": 0.99975,
+     "boot_mean": -0.4323,
+     "auroc": 0.4812,
+     "delta_vs_centrality": -0.4291
+    },
+    "Random forest": {
+     "delta": 0.0031,
+     "ci95": [
+      -0.0318,
+      0.0401
+     ],
+     "p_one_sided": 0.44653,
+     "boot_mean": 0.0025,
+     "auroc": 0.9134,
+     "delta_vs_centrality": 0.0031
+    }
+   },
+   "max_delta_vs_centrality": 0.0031,
+   "preregistered_verdict": "WARN",
+   "role": "preregistered external evaluation (drug-target ecology; related to the druggability layer, not claimed fully independent)",
+   "representation": {
+    "harmonic_shift": 0.0031
+   },
+   "auprc": {
+    "STRING_centrality": 0.0272,
+    "Harmonic_mean": 0.0779
+   },
+   "preregistered_verdict_composite_only": "PASS",
+   "verdict_scope_note": "The preregistered criteria (frozen before E6 outcome inspection) cover the seven fixed-form composites only; on that family the observed outcome is PASS (max composite Delta vs centrality = -0.0045). The supervised random forest exceeded the centrality baseline by 0.0031 (bootstrap 95% CI includes 0; one-sided p = 0.44653), reported separately as a non-significant supervised excess, not as a composite verdict change."
+  },
+  "scorer_manifest": {
+   "n_scorers": 19,
+   "n_scorer_endpoint_cells": 232,
+   "declaration": "19 scorers = 9 single-layer + 7 fixed-form + 3 supervised out-of-fold; the same manifest underlies the Methods text ('seven fixed-form'), every figure bar count, and the BH family",
+   "cells": [
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6951
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4991
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5478
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.524
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5067
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5044
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5072
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6056
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4272
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4152
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5932
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5985
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5752
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5796
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5327
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6341
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6786
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6715
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "E1 PDAC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.7505
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.7018
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4971
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5456
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5303
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5075
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5042
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5064
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6083
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4263
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4151
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.593
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5956
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.576
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5802
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.534
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.638
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6828
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6747
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "E4 CRC pan-dependency",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.7563
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9861
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.7022
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5698
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.3888
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.7374
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.8372
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.8082
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.674
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4118
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.8245
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9483
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9131
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9412
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.8943
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.8539
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9563
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9823
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.8988
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "E5 clinical concordance",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.9418
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4801
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5318
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5147
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5431
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4961
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4938
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5029
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5207
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.492
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4549
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5272
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5234
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5299
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5374
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4931
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4838
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5281
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4984
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5755
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.388
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.426
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4499
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4607
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4982
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4983
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4714
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4503
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5622
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6068
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4087
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4192
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4405
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4158
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.433
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.3905
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.6093
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4975
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5483
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4584
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4446
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4539
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4398
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5024
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5067
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4837
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4705
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5212
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5878
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4354
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4486
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4551
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4276
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.431
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4436
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5737
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.4975
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "endpoint_role": "primary benchmark endpoint",
+     "auroc": 0.5764
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.8457
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.5555
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.5492
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.4543
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.5773
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 1.0
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.6666
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.6459
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.4463
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.7596
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.8785
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.8051
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.888
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.8115
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.7922
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E7 genetic-association reuse",
+     "endpoint_role": "audit control (direct reuse)",
+     "auroc": 0.8283
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.0214
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.694
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.3637
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.2247
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.494
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.4898
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.4623
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.2663
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.4884
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.8941
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.0202
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.1191
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.0573
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.1195
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.3431
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 0.1692
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 1.0
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 1.0
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "E8 interaction label (canonical)",
+     "endpoint_role": "audit control (constructed)",
+     "auroc": 1.0
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6014
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4913
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5393
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4963
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5062
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5058
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5262
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5652
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4609
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4688
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5687
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.57
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5666
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5612
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5177
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E2 PDAC-enriched dependency",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5749
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.7385
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5198
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5369
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5592
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5212
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5239
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.9147
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5886
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4393
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6931
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8247
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.7578
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8926
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8321
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6363
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E3 conjunctive actionability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8345
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6951
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4991
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5478
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.524
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5067
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5044
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5072
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6056
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4272
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4152
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5932
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5985
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5752
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5796
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5327
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6341
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6203
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5628
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.518
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6427
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5109
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5146
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 1.0
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.5282
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.4976
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.7172
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8395
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.769
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.9357
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8741
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.6789
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E3-C out-of-evidence druggability",
+     "endpoint_role": "provenance gradient family",
+     "auroc": 0.8083
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "STRING centrality",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.9103
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Mutation frequency",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.5666
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "IMPC animal KO",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.5001
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Genetic constraint",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.3706
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Cancer-driver annotation",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.6349
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "OT genetics (PDAC)",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.6617
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Druggability",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.7805
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA PDAC prognostic",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.6034
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "HPA RNA tissue spec",
+     "class": "single-layer evidence",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.4958
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "ECS (multiplicative)",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.7048
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Additive",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.8278
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Geometric mean",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.7539
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Harmonic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.8456
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Arithmetic mean",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.7319
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Rank aggregation",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.7856
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Weighted rank",
+     "class": "fixed-form integration",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.9058
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Logistic regression",
+     "class": "supervised out-of-fold",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.9098
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Elastic net",
+     "class": "supervised out-of-fold",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.4812
+    },
+    {
+     "run_id": "v33-20260924T144910-seed20260819",
+     "scorer": "Random forest",
+     "class": "supervised out-of-fold",
+     "endpoint": "E6 external drug response",
+     "endpoint_role": "preregistered external evaluation",
+     "auroc": 0.9134
+    }
+   ]
+  },
+  "source_lineage": {
+   "layers": [
+    {
+     "layer": "string_centrality",
+     "type": "network",
+     "n_covered": 19622,
+     "direction": "higher=better connected",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "constructed control (E8 uses mutation + centrality difference)"
+    },
+    {
+     "layer": "mutation_freq",
+     "type": "genetic",
+     "n_covered": 11205,
+     "direction": "higher=more recurrently mutated",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "constructed control (E8 uses mutation + centrality difference)"
+    },
+    {
+     "layer": "impc_animal_ko",
+     "type": "animal",
+     "n_covered": 7817,
+     "direction": "higher=more lethal/essential in mouse",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "no direct label reuse"
+    },
+    {
+     "layer": "genetic_constraint",
+     "type": "constraint",
+     "n_covered": 14086,
+     "direction": "higher=more intolerant of LoF",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "no direct label reuse"
+    },
+    {
+     "layer": "cancer_driver",
+     "type": "driver",
+     "n_covered": 245,
+     "direction": "1=cancer driver gene",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "no direct label reuse"
+    },
+    {
+     "layer": "ot_genetics_pdac",
+     "type": "genetic",
+     "n_covered": 500,
+     "direction": "higher=genetic association score",
+     "used_directly_by_labels": [
+      "E7 genetic-association reuse"
+     ],
+     "overlap_class_with_labels": "direct reuse (E7 label = top of this layer)"
+    },
+    {
+     "layer": "druggability",
+     "type": "drug",
+     "n_covered": 5188,
+     "direction": "1=approved/druggable target",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "direct reuse (E3-C label = layer membership; E3 conjunction)"
+    },
+    {
+     "layer": "hpa_pdac_prognostic",
+     "type": "cancer",
+     "n_covered": 15541,
+     "direction": "1=prognostic in PDAC",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "no direct label reuse"
+    },
+    {
+     "layer": "hpa_rna_tissue_spec",
+     "type": "tissue",
+     "n_covered": 4679,
+     "direction": "higher=more RNA tissue-specific",
+     "used_directly_by_labels": [],
+     "overlap_class_with_labels": "no direct label reuse"
+    }
+   ],
+   "endpoints": [
+    {
+     "endpoint": "E1 PDAC pan-dependency",
+     "role": "primary",
+     "n_pos": 4584,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9871,
+      "mutation_freq": 0.5552,
+      "impc_animal_ko": 0.4492,
+      "genetic_constraint": 0.796,
+      "cancer_driver": 0.0223,
+      "ot_genetics_pdac": 0.031,
+      "druggability": 0.2528,
+      "hpa_pdac_prognostic": 0.9055,
+      "hpa_rna_tissue_spec": 0.113
+     },
+     "note": "DepMap PDAC essentiality; no layer shares the CRISPR-screen lineage"
+    },
+    {
+     "endpoint": "E4 CRC pan-dependency",
+     "role": "primary (external context)",
+     "n_pos": 4608,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9887,
+      "mutation_freq": 0.5497,
+      "impc_animal_ko": 0.4466,
+      "genetic_constraint": 0.8008,
+      "cancer_driver": 0.0234,
+      "ot_genetics_pdac": 0.0306,
+      "druggability": 0.2515,
+      "hpa_pdac_prognostic": 0.9095,
+      "hpa_rna_tissue_spec": 0.1115
+     },
+     "note": "DepMap CRC; same platform as E1, independent of all nine layers"
+    },
+    {
+     "endpoint": "E5 clinical concordance",
+     "role": "primary (translational)",
+     "n_pos": 35,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 1.0,
+      "mutation_freq": 0.8286,
+      "impc_animal_ko": 0.5429,
+      "genetic_constraint": 0.8286,
+      "cancer_driver": 0.4857,
+      "ot_genetics_pdac": 0.6857,
+      "druggability": 0.7714,
+      "hpa_pdac_prognostic": 1.0,
+      "hpa_rna_tissue_spec": 0.0571
+     },
+     "note": "curated clinical target set; conceptual overlap with druggability and centrality (see per-layer fractions)"
+    },
+    {
+     "endpoint": "SelA PDAC-selective (A_ratio)",
+     "role": "primary",
+     "n_pos": 250,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.98,
+      "mutation_freq": 0.596,
+      "impc_animal_ko": 0.4,
+      "genetic_constraint": 0.744,
+      "cancer_driver": 0.004,
+      "ot_genetics_pdac": 0.012,
+      "druggability": 0.256,
+      "hpa_pdac_prognostic": 0.792,
+      "hpa_rna_tissue_spec": 0.212
+     },
+     "note": "DepMap selective-dependency metric; same platform as E1, no layer reuse"
+    },
+    {
+     "endpoint": "SelB PDAC-selective (B_zeffect==C)",
+     "role": "primary",
+     "n_pos": 250,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.936,
+      "mutation_freq": 0.376,
+      "impc_animal_ko": 0.264,
+      "genetic_constraint": 0.564,
+      "cancer_driver": 0.008,
+      "ot_genetics_pdac": 0.02,
+      "druggability": 0.184,
+      "hpa_pdac_prognostic": 0.6,
+      "hpa_rna_tissue_spec": 0.336
+     },
+     "note": "DepMap z-effect metric; identical file column to SelC (counted once)"
+    },
+    {
+     "endpoint": "SelD PDAC-selective (D_mixed)",
+     "role": "primary",
+     "n_pos": 250,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.94,
+      "mutation_freq": 0.408,
+      "impc_animal_ko": 0.276,
+      "genetic_constraint": 0.576,
+      "cancer_driver": 0.016,
+      "ot_genetics_pdac": 0.036,
+      "druggability": 0.2,
+      "hpa_pdac_prognostic": 0.648,
+      "hpa_rna_tissue_spec": 0.26
+     },
+     "note": "DepMap mixed selective metric; no layer reuse"
+    },
+    {
+     "endpoint": "E7 genetic-association reuse",
+     "role": "audit control",
+     "n_pos": 200,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.96,
+      "mutation_freq": 0.62,
+      "impc_animal_ko": 0.46,
+      "genetic_constraint": 0.745,
+      "cancer_driver": 0.165,
+      "ot_genetics_pdac": 1.0,
+      "druggability": 0.535,
+      "hpa_pdac_prognostic": 0.96,
+      "hpa_rna_tissue_spec": 0.12
+     },
+     "note": "label = top-200 of the OT genetics layer: direct value reuse by construction (overlap 1.0)"
+    },
+    {
+     "endpoint": "E8 interaction label (canonical)",
+     "role": "audit control",
+     "n_pos": 250,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.0,
+      "mutation_freq": 1.0,
+      "impc_animal_ko": 0.112,
+      "genetic_constraint": 0.14,
+      "cancer_driver": 0.0,
+      "ot_genetics_pdac": 0.004,
+      "druggability": 0.196,
+      "hpa_pdac_prognostic": 0.304,
+      "hpa_rna_tissue_spec": 0.212
+     },
+     "note": "constructed interaction label = top-250 of (mutation - centrality) difference; circular by construction"
+    },
+    {
+     "endpoint": "E6 external drug response",
+     "role": "preregistered external evaluation",
+     "n_pos": 32,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9688,
+      "mutation_freq": 0.5938,
+      "impc_animal_ko": 0.4062,
+      "genetic_constraint": 0.6875,
+      "cancer_driver": 0.2812,
+      "ot_genetics_pdac": 0.3438,
+      "druggability": 0.7188,
+      "hpa_pdac_prognostic": 0.9062,
+      "hpa_rna_tissue_spec": 0.2188
+     },
+     "note": "GDSC1 drug-response construction; drug-target ecology related to druggability; not claimed fully independent"
+    },
+    {
+     "endpoint": "E2 PDAC-enriched dependency",
+     "role": "provenance gradient family",
+     "n_pos": 1147,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9843,
+      "mutation_freq": 0.5432,
+      "impc_animal_ko": 0.4429,
+      "genetic_constraint": 0.7611,
+      "cancer_driver": 0.0235,
+      "ot_genetics_pdac": 0.0349,
+      "druggability": 0.2929,
+      "hpa_pdac_prognostic": 0.8544,
+      "hpa_rna_tissue_spec": 0.1534
+     },
+     "note": "DepMap B_zeffect >= Q75; no layer reuse"
+    },
+    {
+     "endpoint": "E3 conjunctive actionability",
+     "role": "provenance gradient family",
+     "n_pos": 1159,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9965,
+      "mutation_freq": 0.5953,
+      "impc_animal_ko": 0.4349,
+      "genetic_constraint": 0.9784,
+      "cancer_driver": 0.0518,
+      "ot_genetics_pdac": 0.069,
+      "druggability": 1.0,
+      "hpa_pdac_prognostic": 0.8913,
+      "hpa_rna_tissue_spec": 0.1139
+     },
+     "note": "ess AND druggability-annotated: direct membership reuse of the druggability layer"
+    },
+    {
+     "endpoint": "E3-A leakage-controlled essentiality",
+     "role": "provenance gradient family",
+     "n_pos": 4584,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9871,
+      "mutation_freq": 0.5552,
+      "impc_animal_ko": 0.4492,
+      "genetic_constraint": 0.796,
+      "cancer_driver": 0.0223,
+      "ot_genetics_pdac": 0.031,
+      "druggability": 0.2528,
+      "hpa_pdac_prognostic": 0.9055,
+      "hpa_rna_tissue_spec": 0.113
+     },
+     "note": "E1 definition (control)"
+    },
+    {
+     "endpoint": "E3-C out-of-evidence druggability",
+     "role": "provenance gradient family",
+     "n_pos": 5188,
+     "frac_positives_annotated_per_layer": {
+      "string_centrality": 0.9628,
+      "mutation_freq": 0.6263,
+      "impc_animal_ko": 0.3992,
+      "genetic_constraint": 0.9379,
+      "cancer_driver": 0.0281,
+      "ot_genetics_pdac": 0.0459,
+      "druggability": 1.0,
+      "hpa_pdac_prognostic": 0.7874,
+      "hpa_rna_tissue_spec": 0.2271
+     },
+     "note": "label == druggability layer membership: circular control"
+    }
+   ]
+  },
+  "run_record": {
+   "run_id": "v33-20260924T144910-seed20260819",
+   "started_utc": "2026-09-24T07:01:03+00:00",
+   "wall_time_seconds": 1610.3,
+   "seed": 20260819,
+   "bootstrap": 2000,
+   "nulls": 1000,
+   "sentinel": -3.0,
+   "python": "3.13.12",
+   "numpy": "2.5.3",
+   "sklearn": "1.9.0",
+   "code_sha256": "b01bbc26425c5e14873e2c60e441c1c9d83fc14580b449152e989ace63fb2ed3",
+   "frozen_inputs_sha256": {
+    "depmap_crc_dependency.json": "5043490693a25a02d8612618b8992df8ceff41d66ca08b9f2b78b32731dc19ce",
+    "depmap_pdac_dependency.json": "13f629950a0052aa247eb7d494f54e43acb94b3d049ad145326e76db99e3daa2",
+    "e6_clinical_validation.json": "9a525599a77393e2eb11d41b1c5cafa0dfabd8d353ee4506590e7c8f11ec4c30",
+    "evidence_layers_v11.json": "a4cb1a84574e290b51a6627f947fcf45306ecdbd7fb1fdda3073a4761bf35499",
+    "pdac_selective_dependency_v11.json": "cdf085e26404f077c995244cac667eebe2a2a696c77e4e1670da1ecdd2a7e6d3"
+   },
+   "external_gdsc_sha256": {
+    "cell_annotations": "77648d1cada2f325ba2c049a5fb5408434f73b963c8e1148fb82ba2653e469e1",
+    "gdsc_ic50": "9dad3b047e20b59b88d88ba00f64ef53e7dcfc11e7cceab19d9e79ae746105bb",
+    "drug_list": "b88757dd7aa7979251832b4866ff605f716854705d49ea4cb256f794e262a74e"
+   },
+   "bh_family_size": 60,
+   "bh_n_survivors": 4,
+   "s7_redefinition_note": "S7 was redefined in v33. The v27 archived comparable-pair definition (both genes covered by all 8 component layers) is mathematically empty on the frozen universe: the 8-layer intersection contains 0 genes (cancer_driver covers 245 genes, ot_genetics_pdac 500), so the archived v27 code yields n = 0 comparable pairs. The v27 archived rates (n = 1,847,559, I = 0.38-0.53) were generated after the v27 run by a side script (recompute_s7.py, 2026-09-17) using a looser definition (comparable = at least one jointly observed layer; reference = sign of the sum over jointly observed layers) while the archived definition text remained the strict all-layer version - the archived numbers and definition do not match. v33 replaces S7 with an explicit consensus-based pairwise inversion proportion (definition in self_audit.s7_pairwise_inversion_proportion); the manuscript text and Fig. 3b use only v33 numbers."
+  }
+ }
+}

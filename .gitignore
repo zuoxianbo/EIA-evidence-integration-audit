@@ -1,0 +1,41 @@
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.swp
+
+# ---- R ----
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+.Rproj.user/
+# stray plot artefacts from interactive sessions
+Rplots.pdf
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+
+# ---- Logs / temp ----
+*.log
+*.tmp
+
+# NOTE:
+# Frozen analysis inputs (data/raw_inputs/*.json) and per-figure source data
+# (data/source_data/*.csv) ARE intentionally tracked — they are required for
+# reproduction and are all well under GitHub's 100 MB per-file limit
+# (largest file: evidence_layers_v11.json, ~11 MB).
+#
+# Third-party raw data that we do NOT redistribute (e.g. GDSC / DeepCDR) is
+# never placed in this tree; it is supplied locally via the GDSC_DIR
+# environment variable.
+
+# local scratch
+.trash/
+
+# local ops helper, not part of the release
+push_to_github.sh

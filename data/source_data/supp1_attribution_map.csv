@@ -1,0 +1,9 @@
+endpoint,context,provenance_note,provenance_independence,repr_shift,delta_auroc,n_pos
+E1,in-sample,independent source,1.0,0.052,-0.1199,4584
+E2,in-sample,independent source,0.0,0.02,-0.0348,1147
+E3,in-sample,direct label reuse,1.0,-0.0222,0.1541,1159
+E3-A,in-sample,leakage control,0.0,0.052,-0.1199,4584
+E3-C,in-sample,circular control,1.0,-0.0407,0.3154,5188
+E4,external,independent context,1.0,0.054,-0.1258,4608
+E5,external,translational,1.0,-0.0434,-0.0449,35
+E6,external,related ecology,0.5,0.0031,-0.0647,32

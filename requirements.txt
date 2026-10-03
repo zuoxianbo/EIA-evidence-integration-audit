@@ -1,0 +1,15 @@
+# Python dependencies for the frozen EIA analysis pipeline.
+#
+# The figures are generated in R (see environment.yml). These packages are
+# required by code/python/run_analysis.py to reproduce the reported
+# numbers: the 19 scorers, the paired bootstrap (B=2000, seed 20260819), the
+# one-sided P values P = (#{d<=0}+0.5)/(B+1), the BH correction and the
+# vectorised nulls.
+
+# --- numerical / statistical core (analysis) ---
+numpy>=1.26,<3
+scikit-learn>=1.4,<2
+scipy>=1.11,<2
+
+# --- document assembly (build.py, build_submission_forms.py, wordcount.py) ---
+python-docx==1.2.0

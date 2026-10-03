@@ -1,0 +1,233 @@
+run_id,scorer,class,endpoint,endpoint_role,auroc
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.6951
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.4991
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.5478
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.524
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.5067
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.5044
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.5072
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.6056
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E1 PDAC pan-dependency,primary benchmark endpoint,0.4272
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.4152
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.5932
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.5985
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.5752
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.5796
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.5327
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E1 PDAC pan-dependency,primary benchmark endpoint,0.6341
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,E1 PDAC pan-dependency,primary benchmark endpoint,0.6786
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,E1 PDAC pan-dependency,primary benchmark endpoint,0.6715
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,E1 PDAC pan-dependency,primary benchmark endpoint,0.7505
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.7018
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.4971
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.5456
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.5303
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.5075
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.5042
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.5064
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.6083
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E4 CRC pan-dependency,primary benchmark endpoint,0.4263
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.4151
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.593
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.5956
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.576
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.5802
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.534
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E4 CRC pan-dependency,primary benchmark endpoint,0.638
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,E4 CRC pan-dependency,primary benchmark endpoint,0.6828
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,E4 CRC pan-dependency,primary benchmark endpoint,0.6747
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,E4 CRC pan-dependency,primary benchmark endpoint,0.7563
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.9861
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.7022
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.5698
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.3888
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.7374
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.8372
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.8082
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.674
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E5 clinical concordance,primary benchmark endpoint,0.4118
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.8245
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.9483
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.9131
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.9412
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.8943
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.8539
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E5 clinical concordance,primary benchmark endpoint,0.9563
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,E5 clinical concordance,primary benchmark endpoint,0.9823
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,E5 clinical concordance,primary benchmark endpoint,0.8988
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,E5 clinical concordance,primary benchmark endpoint,0.9418
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4801
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5318
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5147
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5431
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4961
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4938
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5029
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5207
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.492
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4549
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5272
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5234
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5299
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5374
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4931
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4838
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5281
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.4984
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,SelA PDAC-selective (A_ratio),primary benchmark endpoint,0.5755
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.388
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.426
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4499
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4607
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4982
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4983
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4714
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4503
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.5622
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.6068
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4087
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4192
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4405
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4158
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.433
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.3905
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.6093
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.4975
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,SelB PDAC-selective (B_zeffect==C),primary benchmark endpoint,0.5483
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4584
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4446
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4539
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4398
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.5024
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.5067
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4837
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4705
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.5212
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.5878
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4354
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4486
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4551
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4276
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.431
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4436
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.5737
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.4975
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,SelD PDAC-selective (D_mixed),primary benchmark endpoint,0.5764
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.8457
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.5555
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.5492
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.4543
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.5773
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),1.0
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.6666
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.6459
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E7 genetic-association reuse,audit control (direct reuse),0.4463
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.7596
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.8785
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.8051
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.888
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.8115
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.7922
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E7 genetic-association reuse,audit control (direct reuse),0.8283
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.0214
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.694
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.3637
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.2247
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.494
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.4898
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.4623
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.2663
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E8 interaction label (canonical),audit control (constructed),0.4884
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.8941
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.0202
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.1191
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.0573
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.1195
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.3431
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E8 interaction label (canonical),audit control (constructed),0.1692
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,E8 interaction label (canonical),audit control (constructed),1.0
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,E8 interaction label (canonical),audit control (constructed),1.0
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,E8 interaction label (canonical),audit control (constructed),1.0
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.6014
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.4913
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.5393
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.4963
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.5062
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.5058
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.5262
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.5652
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E2 PDAC-enriched dependency,provenance gradient family,0.4609
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.4688
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.5687
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.57
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.5666
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.5612
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.5177
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E2 PDAC-enriched dependency,provenance gradient family,0.5749
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.7385
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.5198
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.5369
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.5592
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.5212
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.5239
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.9147
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.5886
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E3 conjunctive actionability,provenance gradient family,0.4393
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.6931
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.8247
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.7578
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.8926
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.8321
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.6363
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E3 conjunctive actionability,provenance gradient family,0.8345
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.6951
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.4991
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.5478
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.524
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.5067
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.5044
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.5072
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.6056
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E3-A leakage-controlled essentiality,provenance gradient family,0.4272
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.4152
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.5932
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.5985
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.5752
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.5796
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.5327
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E3-A leakage-controlled essentiality,provenance gradient family,0.6341
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.6203
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.5628
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.518
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.6427
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.5109
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.5146
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,1.0
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.5282
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E3-C out-of-evidence druggability,provenance gradient family,0.4976
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.7172
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.8395
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.769
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.9357
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.8741
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.6789
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E3-C out-of-evidence druggability,provenance gradient family,0.8083
+v33-20260924T144910-seed20260819,STRING centrality,single-layer evidence,E6 external drug response,preregistered external evaluation,0.9103
+v33-20260924T144910-seed20260819,Mutation frequency,single-layer evidence,E6 external drug response,preregistered external evaluation,0.5666
+v33-20260924T144910-seed20260819,IMPC animal KO,single-layer evidence,E6 external drug response,preregistered external evaluation,0.5001
+v33-20260924T144910-seed20260819,Genetic constraint,single-layer evidence,E6 external drug response,preregistered external evaluation,0.3706
+v33-20260924T144910-seed20260819,Cancer-driver annotation,single-layer evidence,E6 external drug response,preregistered external evaluation,0.6349
+v33-20260924T144910-seed20260819,OT genetics (PDAC),single-layer evidence,E6 external drug response,preregistered external evaluation,0.6617
+v33-20260924T144910-seed20260819,Druggability,single-layer evidence,E6 external drug response,preregistered external evaluation,0.7805
+v33-20260924T144910-seed20260819,HPA PDAC prognostic,single-layer evidence,E6 external drug response,preregistered external evaluation,0.6034
+v33-20260924T144910-seed20260819,HPA RNA tissue spec,single-layer evidence,E6 external drug response,preregistered external evaluation,0.4958
+v33-20260924T144910-seed20260819,ECS (multiplicative),fixed-form integration,E6 external drug response,preregistered external evaluation,0.7048
+v33-20260924T144910-seed20260819,Additive,fixed-form integration,E6 external drug response,preregistered external evaluation,0.8278
+v33-20260924T144910-seed20260819,Geometric mean,fixed-form integration,E6 external drug response,preregistered external evaluation,0.7539
+v33-20260924T144910-seed20260819,Harmonic mean,fixed-form integration,E6 external drug response,preregistered external evaluation,0.8456
+v33-20260924T144910-seed20260819,Arithmetic mean,fixed-form integration,E6 external drug response,preregistered external evaluation,0.7319
+v33-20260924T144910-seed20260819,Rank aggregation,fixed-form integration,E6 external drug response,preregistered external evaluation,0.7856
+v33-20260924T144910-seed20260819,Weighted rank,fixed-form integration,E6 external drug response,preregistered external evaluation,0.9058
+v33-20260924T144910-seed20260819,Logistic regression,supervised out-of-fold,E6 external drug response,preregistered external evaluation,0.9098
+v33-20260924T144910-seed20260819,Elastic net,supervised out-of-fold,E6 external drug response,preregistered external evaluation,0.4812
+v33-20260924T144910-seed20260819,Random forest,supervised out-of-fold,E6 external drug response,preregistered external evaluation,0.9134

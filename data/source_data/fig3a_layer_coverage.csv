@@ -1,0 +1,10 @@
+layer,n_present,n_total,pct_present
+string_centrality,19622,20751,94.5593
+mutation_freq,11205,20751,53.9974
+impc_animal_ko,7817,20751,37.6705
+genetic_constraint,14086,20751,67.8811
+cancer_driver,245,20751,1.1807
+ot_genetics_pdac,500,20751,2.4095
+druggability,5188,20751,25.0012
+hpa_pdac_prognostic,15541,20751,74.8928
+hpa_rna_tissue_spec,4679,20751,22.5483

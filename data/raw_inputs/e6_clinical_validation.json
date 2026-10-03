@@ -1,0 +1,184 @@
+{
+ "description": "Independent PDAC therapeutic-target validation set (E6).",
+ "api_reachable": true,
+ "n_genes": 35,
+ "genes": [
+  "ATM",
+  "AURKA",
+  "BCL2",
+  "BRCA1",
+  "BRCA2",
+  "CDK1",
+  "CDK4",
+  "CDKN2A",
+  "CSF1R",
+  "CTLA4",
+  "CXCR4",
+  "EGFR",
+  "ERBB2",
+  "FGFR1",
+  "GATA6",
+  "IDH1",
+  "IDH2",
+  "KRAS",
+  "MAP2K1",
+  "MAPK1",
+  "MET",
+  "MTOR",
+  "MYC",
+  "PARP1",
+  "PIK3CA",
+  "PLK1",
+  "PXN",
+  "RRM1",
+  "SMAD4",
+  "SRC",
+  "STK11",
+  "TGFB1",
+  "TOP1",
+  "TP53",
+  "TYMS"
+ ],
+ "provenance": {
+  "RRM1": [
+   "ClinicalTrials.gov:gemcitabine"
+  ],
+  "ERBB2": [
+   "ClinicalTrials.gov:deruxtecan",
+   "ClinicalTrials.gov:emtansine",
+   "ClinicalTrials.gov:neratinib",
+   "ClinicalTrials.gov:pertuzumab",
+   "ClinicalTrials.gov:trastuzumab",
+   "curated-PDAC-target"
+  ],
+  "FGFR1": [
+   "ClinicalTrials.gov:pemigatinib",
+   "curated-PDAC-target"
+  ],
+  "TOP1": [
+   "ClinicalTrials.gov:irinotecan"
+  ],
+  "TYMS": [
+   "ClinicalTrials.gov:capecitabine",
+   "ClinicalTrials.gov:fluorouracil"
+  ],
+  "CTLA4": [
+   "ClinicalTrials.gov:ipilimumab",
+   "curated-PDAC-target"
+  ],
+  "EGFR": [
+   "ClinicalTrials.gov:afatinib",
+   "ClinicalTrials.gov:cetuximab",
+   "ClinicalTrials.gov:erlotinib",
+   "ClinicalTrials.gov:gefitinib",
+   "ClinicalTrials.gov:nimotuzumab",
+   "ClinicalTrials.gov:panitumumab",
+   "curated-PDAC-target"
+  ],
+  "MAP2K1": [
+   "ClinicalTrials.gov:binimetinib",
+   "ClinicalTrials.gov:cobimetinib",
+   "ClinicalTrials.gov:selumetinib",
+   "ClinicalTrials.gov:trametinib",
+   "curated-PDAC-target"
+  ],
+  "PARP1": [
+   "ClinicalTrials.gov:niraparib",
+   "ClinicalTrials.gov:olaparib",
+   "ClinicalTrials.gov:rucaparib",
+   "ClinicalTrials.gov:talazoparib",
+   "ClinicalTrials.gov:veliparib",
+   "curated-PDAC-target"
+  ],
+  "CDK4": [
+   "ClinicalTrials.gov:abemaciclib",
+   "ClinicalTrials.gov:palbociclib",
+   "curated-PDAC-target"
+  ],
+  "MTOR": [
+   "ClinicalTrials.gov:everolimus",
+   "ClinicalTrials.gov:sirolimus",
+   "ClinicalTrials.gov:temsirolimus",
+   "curated-PDAC-target"
+  ],
+  "TGFB1": [
+   "ClinicalTrials.gov:galunisertib",
+   "ClinicalTrials.gov:vactosertib",
+   "curated-PDAC-target"
+  ],
+  "MET": [
+   "ClinicalTrials.gov:cabozantinib",
+   "curated-PDAC-target"
+  ],
+  "PIK3CA": [
+   "ClinicalTrials.gov:alpelisib",
+   "curated-PDAC-target"
+  ],
+  "KRAS": [
+   "ClinicalTrials.gov:adagrasib",
+   "ClinicalTrials.gov:sotorasib",
+   "curated-PDAC-target"
+  ],
+  "MAPK1": [
+   "ClinicalTrials.gov:ulixertinib"
+  ],
+  "CSF1R": [
+   "ClinicalTrials.gov:pexidartinib",
+   "curated-PDAC-target"
+  ],
+  "BRCA1": [
+   "curated-PDAC-target"
+  ],
+  "BRCA2": [
+   "curated-PDAC-target"
+  ],
+  "ATM": [
+   "curated-PDAC-target"
+  ],
+  "TP53": [
+   "curated-PDAC-target"
+  ],
+  "CDK1": [
+   "curated-PDAC-target"
+  ],
+  "BCL2": [
+   "curated-PDAC-target"
+  ],
+  "SMAD4": [
+   "curated-PDAC-target"
+  ],
+  "CDKN2A": [
+   "curated-PDAC-target"
+  ],
+  "STK11": [
+   "curated-PDAC-target"
+  ],
+  "GATA6": [
+   "curated-PDAC-target"
+  ],
+  "MYC": [
+   "curated-PDAC-target"
+  ],
+  "IDH1": [
+   "curated-PDAC-target"
+  ],
+  "IDH2": [
+   "curated-PDAC-target"
+  ],
+  "PXN": [
+   "curated-PDAC-target"
+  ],
+  "CXCR4": [
+   "curated-PDAC-target"
+  ],
+  "SRC": [
+   "curated-PDAC-target"
+  ],
+  "AURKA": [
+   "curated-PDAC-target"
+  ],
+  "PLK1": [
+   "curated-PDAC-target"
+  ]
+ }
+}

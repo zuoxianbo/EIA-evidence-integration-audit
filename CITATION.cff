@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "Auditing information attribution in biomedical evidence integration"
+authors:
+  - family-names: "Li"
+    given-names: "Jingtao"
+  - family-names: "Song"
+    given-names: "Xuejiao"
+  - family-names: "Qi"
+    given-names: "Xiaoyan"
+  - family-names: "Chen"
+    given-names: "Lili"
+  - family-names: "Zuo"
+    given-names: "Xianbo"
+date-released: 2026-09-28
+license: MIT
+url: "[REPOSITORY URL TO BE INSERTED ON ACCEPTANCE]"
+repository-code: "[REPOSITORY URL TO BE INSERTED ON ACCEPTANCE]"
